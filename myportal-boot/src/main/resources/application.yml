@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    # 默认激活的配置文件
+    include:
+      - common
+    # 当前激活的配置文件
+    active:
+      - ${profiles.active}
+
+  application:
+    # 应用名称
+    name: myportal
+    # 应用中文名称
+    cn-name: myportal
+
+avicit:
+  application:
+    # 当前应用ID
+    application-id: 1

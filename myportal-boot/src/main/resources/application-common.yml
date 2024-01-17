@@ -1,0 +1,191 @@
+server:
+  # 热部署相关配置
+  servlet:
+    jsp:
+      init-parameters:
+        # 开启jsp热部署
+        development: true
+  # tomcat相关配置
+  tomcat:
+    # tomcat字符集编码
+    uri-encoding: UTF-8
+spring:
+  http-client:
+    # 连接池最大连接数
+    max-total: 500
+  http-request-factory:
+    # 创建连接的最长时间
+    connect-timeout: 100000
+    # 从连接池中获取到连接的最长时间
+    connection-request-timeout: 100000
+    # 读写超时时间
+    read-timeout: 100000
+  main:
+    # 是否允许bean重复定义
+    allow-bean-definition-overriding: true
+  # redis相关配置
+  redis:
+    # redis连接地址
+    host: 127.0.0.1
+    # redis连接端口
+    port: 6379
+    # 使用 ENC() 指定加密字符串 或者 直接使用明文
+    password: avicit
+    #password: ENC(7Utfyh4acSM=)
+    # redis连接数据库
+    database: 0
+    # redis连接超时时间
+    timeout: 2000
+    # jedis连接池相关配置
+    jedis:
+      pool:
+        # 连接池最大活跃连接数
+        max-active: 500
+        # 连接池最大空闲连接数
+        max-idle: 200
+        # 连接池最小空闲连接数
+        min-idle: 10
+        # 最大连接阻塞等待时间,默认-1ms
+        max-wait: 10000
+  # 数据源配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    # HikariCP连接池配置
+    hikari:
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 20000
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 600000
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 30
+      # 最小空闲连接数量，默认值10
+      minimum-idle: 10
+      # 连接池名称
+      # pool-name: MyHikariCP
+      # 用于测试连接是否可用的查询语句
+      # connection-test-query: SELECT 1
+  # spring jpa 配置 (hibernate配置)
+  jpa:
+    properties:
+      hibernate:
+        # 是否打印sql
+        show-sql: false
+        # 是否按照标准格式在控制台上输出SQL语句
+        format_sql: true
+        # 数据库方言配置
+        dialect: org.hibernate.dialect.MySQLDialect
+        # 是否开启批量新增
+        order_inserts: true
+        # 是否开启批量更新
+        order_updates: true
+        # 是否开启Hibernate应用中操作的统计信息
+        generate_statistics: false
+        # 是否开启sql注释
+        use_sql_comments: false
+        jdbc:
+          # 批量操作大小
+          batch_size: 15
+          # 是否保存过时数据
+          batch_versioned_data: true
+
+avicit:
+  application:
+    isServer: true
+    # 启用oauth2鉴权，生产环境需开启
+    auth-enabled: false
+  rest:
+    # 服务授权clientId
+    clientId: 13e73834-78a9-4a73-a1fb-2ef55118d830
+    # 服务授权clientSecret
+    clientSecret: 8OfTtJyeRausXWRgfmmLGQ
+    # 服务授权地址
+    authHost: https://127.0.0.1:6884
+    restConfig:
+      system:
+        host: http://127.0.0.1:10001
+      bpm:
+        host: http://127.0.0.1:10001
+      syslog:
+        host: http://127.0.0.1:10001
+      oss:
+        host: http://127.0.0.1:10001
+      eformvue:
+        host: http://127.0.0.1:10001
+#fastdfs配置信息
+platform:
+  oss:
+    #fastdfs配置
+    fastdfs:
+      connect_timeout: 5
+      network_timeout: 20
+      charset: UTF-8
+      http_tracker_http_port: 8080
+      http_anti_steal_token: no
+      http_secret_key: FastDFS1234567890
+      tracker_server: 111.229.130.226:22122
+  unableModify:
+    system:
+      # 平台默认三员及平台管理员编码
+      sysRole: platform_manager,system_manager,safety_auditor,safety_manager,comm_user
+
+syslog:
+  # 是否开启新增日志记录
+  insert: true
+  # 是否开启更新日志记录
+  update: true
+  # 是否开启查询日志记录
+  select: true
+  # 是否开启删除日志记录
+  delete: true
+  # 是否开启登录日志记录
+  login: true
+  # 是否开启退出日志记录
+  logout: true
+
+sany:
+  # 平台管理员允许查看的日志类型
+  platform_manager:
+    - module_operate
+    - safety_audit
+    - safety_manage
+    - system_manage
+  # 系统管理员允许查看的日志类型
+  system_manager:
+    - none
+  # 安全管理员允许查看的日志类型
+  safety_manager:
+    - module_operate
+    - safety_audit
+  # 安全审计员允许查看的日志类型
+  safety_auditor:
+    - safety_manage
+    - system_manage
+  # 平台默认的角色编码列表
+  sys_roles:
+    - platform_manager
+    - system_manager
+    - safety_auditor
+    - safety_manager
+    - comm_user
+
+#LOG
+logging:
+  level:
+    # avicit包下代码的日志级别
+    avicit: debug
+
+# 配置mapper的扫描,找到所有的mapper.xml映射文件
+mybatis:
+  mapperLocations: classpath*:avicit/**/dao/*Mapper.xml
+
+# PageHelper分页插件
+pagehelper:
+  # 分页合理化参数 当查询页码超出总页数 默认返回最后一页的数据
+  reasonable: true
+  #处理多数据源为不同数据库
+  autoRuntimeDialect: true
+

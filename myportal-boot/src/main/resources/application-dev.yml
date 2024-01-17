@@ -1,0 +1,48 @@
+# 服务配置
+server:
+  # 服务启动端口
+  port: 10100
+# Spring配置
+spring:
+  # 数据源配置
+  datasource:
+    #oracle
+    driver-class-name: dm.jdbc.driver.DmDriver
+    # 数据库驱动 -oracle
+    #driver-class-name: oracle.jdbc.driver.OracleDriver
+    # 数据库驱动 -mysql
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库驱动 -dm
+    #driver-class-name: dm.jdbc.driver.DmDriver
+    # 数据库驱动 -shentong (神通数据库)
+    #driver-class-name: com.oscar.Driver
+    # 数据库驱动 -kingbase (人大金仓)
+    #driver-class-name: com.kingbase8.Driver
+    url: jdbc:dm://127.0.0.1:5236
+    # 数据库连接地址 -oracle
+    #url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    # 数据库连接地址 -mysql
+    #url: jdbc:mysql://127.0.0.1:3306/v6r43?characterEncoding=UTF-8&useUnicode=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useInformationSchema=true&allowMultiQueries=true
+    # 数据库连接地址 -dm
+    #url: jdbc:dm://127.0.0.1:5236
+    # 数据库连接地址 -oscar
+    #url: jdbc:oscar://127.0.0.1:2003/OSRDB
+    # 数据库连接地址 -kingbase
+    #url: jdbc:kingbase8://127.0.0.1:54321/PT6432
+    username: qmrm
+    password: 12345678aA
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.DmDialect
+        # 数据库方言 -shentong
+        #dialect: org.hibernate.dialect.OscarDialect
+        # 数据库方言 -kingbase
+        #dialect: org.hibernate.dialect.Kingbase8Dialect
+  #Redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    # 使用 ENC() 指定加密字符串 或者 直接使用明文
+    password: avicit
+
