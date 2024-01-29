@@ -45,6 +45,7 @@
 	<result property="mtDeviceIds" column="MT_DEVICE_IDS" jdbcType="VARCHAR" />
 	<result property="mtDeviceCodes" column="MT_DEVICE_CODES" jdbcType="VARCHAR" />
 	<result property="mtDeviceNames" column="MT_DEVICE_NAMES" jdbcType="VARCHAR" />
+	<result property="type" column="TYPE" jdbcType="VARCHAR" />
 </resultMap>
 <sql id="commonColums">
 	<trim suffixOverrides=",">
@@ -91,6 +92,7 @@
 		t1.MT_DEVICE_IDS,
 		t1.MT_DEVICE_CODES,
 		t1.MT_DEVICE_NAMES,
+		t1.TYPE,
 	</trim>
 </sql>
 <!-- 默认查询条件 -->
@@ -244,6 +246,9 @@
 	<if test="bean.mtDeviceNames != null and bean.mtDeviceNames != ''">
 		and t1.MT_DEVICE_NAMES like concat(concat('%',#{bean.mtDeviceNames}),'%')
 	</if>
+	<if test="bean.type != null and bean.type != ''">
+		and t1.TYPE = #{bean.type}
+	</if>
 </sql>
 <sql id="commonWhereOr">
 	<trim prefix="(" suffix=")" prefixOverrides="or">
@@ -382,6 +387,9 @@
 		<if test="bean.mtDeviceNames != null and bean.mtDeviceNames != ''">
 			or t1.MT_DEVICE_NAMES like concat(concat('%',#{bean.mtDeviceNames}),'%')
 		</if>
+		<if test="bean.type != null and bean.type != ''">
+			or t1.TYPE = #{bean.type}
+		</if>
 	</trim>
 </sql>
 <sql id="commonOrderBy">
@@ -413,7 +421,7 @@
 		</if>
 		<include refid="defaultWhereAnd"/>
 	</where>
-	<include refid="commonOrderBy"></include>
+	<include refid="commonOrderBy"/>
 </select>
 <!-- 查询列表 MEETING_ROOM -->
 <select id="searchMeetingRoom" parameterType="java.util.Map" resultMap="MeetingRoomDTOMap">
@@ -588,6 +596,9 @@
 		<if test="mtDeviceNames != null">
 			MT_DEVICE_NAMES,
 		</if>
+		<if test="type != null">
+			TYPE,
+		</if>
 	</trim>
 	<trim prefix="values (" suffix=")" suffixOverrides=",">
 		<if test="id != null">
@@ -719,6 +730,9 @@
 		<if test="mtDeviceNames != null">
 			#{mtDeviceNames,jdbcType = VARCHAR},
 		</if>
+		<if test="type != null">
+			#{type,jdbcType = VARCHAR},
+		</if>
 	</trim>
 </insert>
 <!-- 批量新增对象 MEETING_ROOM -->
@@ -766,7 +780,8 @@
 		VERSION ,
 		MT_DEVICE_IDS ,
 		MT_DEVICE_CODES ,
-		MT_DEVICE_NAMES 
+		MT_DEVICE_NAMES ,
+		TYPE
 	)
 	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
 		select
@@ -812,7 +827,8 @@
 			#{item.version,jdbcType = DECIMAL} ,
 			#{item.mtDeviceIds,jdbcType = VARCHAR} ,
 			#{item.mtDeviceCodes,jdbcType = VARCHAR} ,
-			#{item.mtDeviceNames,jdbcType = VARCHAR} 
+			#{item.mtDeviceNames,jdbcType = VARCHAR} ,
+			#{item.type,jdbcType = VARCHAR}
 		from dual
 	</foreach>
 </insert>
@@ -947,7 +963,10 @@
 			MT_DEVICE_CODES = #{mtDeviceCodes,jdbcType = VARCHAR} ,
 		</if>
 		<if test="mtDeviceNames != null">
-			MT_DEVICE_NAMES = #{mtDeviceNames,jdbcType = VARCHAR} 
+			MT_DEVICE_NAMES = #{mtDeviceNames,jdbcType = VARCHAR} ,
+		</if>
+		<if test="type != null">
+			TYPE = #{type,jdbcType = VARCHAR}
 		</if>
 	</set>
 	where id = #{id} 
@@ -995,7 +1014,8 @@
 		VERSION = version+1 ,
 		MT_DEVICE_IDS = #{mtDeviceIds,jdbcType = VARCHAR} ,
 		MT_DEVICE_CODES = #{mtDeviceCodes,jdbcType = VARCHAR} ,
-		MT_DEVICE_NAMES = #{mtDeviceNames,jdbcType = VARCHAR} 
+		MT_DEVICE_NAMES = #{mtDeviceNames,jdbcType = VARCHAR} ,
+		TYPE = #{type,jdbcType = VARCHAR}
 	</trim>
 	where id = #{id}
 	and version = #{version}
@@ -1048,7 +1068,8 @@
 			VERSION = version+1  ,
 			MT_DEVICE_IDS = #{item.mtDeviceIds,jdbcType = VARCHAR} ,
 			MT_DEVICE_CODES = #{item.mtDeviceCodes,jdbcType = VARCHAR} ,
-			MT_DEVICE_NAMES = #{item.mtDeviceNames,jdbcType = VARCHAR} 
+			MT_DEVICE_NAMES = #{item.mtDeviceNames,jdbcType = VARCHAR} ,
+			TYPE = #{item.type,jdbcType = VARCHAR}
 		where id = #{item.id}
 		and version = #{item.version};
 	</foreach>

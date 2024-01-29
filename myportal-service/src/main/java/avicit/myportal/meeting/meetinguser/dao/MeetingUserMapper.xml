@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="avicit.myportal.event.event.dao.EventDAO">
-<resultMap id="EventDTOMap" type="avicit.myportal.event.event.dto.EventDTO">
+<mapper namespace="avicit.myportal.meeting.meetinguser.dao.MeetingUserDAO">
+<resultMap id="MeetingUserDTOMap" type="avicit.myportal.meeting.meetinguser.dto.MeetingUserDTO">
 	<result property="id" column="ID" jdbcType="VARCHAR" />
-	<result property="name" column="NAME" jdbcType="VARCHAR" />
-	<result property="authorId" column="AUTHOR_ID" jdbcType="VARCHAR" />
-	<result property="authorCode" column="AUTHOR_CODE" jdbcType="VARCHAR" />
-	<result property="authorName" column="AUTHOR_NAME" jdbcType="VARCHAR" />
-	<result property="placeId" column="PLACE_ID" jdbcType="VARCHAR" />
-	<result property="placeName" column="PLACE_NAME" jdbcType="VARCHAR" />
-	<result property="startTime" column="START_TIME" jdbcType="TIMESTAMP" />
-	<result property="endTime" column="END_TIME" jdbcType="TIMESTAMP" />
-	<result property="ynValid" column="YN_VALID" jdbcType="VARCHAR" />
-	<result property="ynPublic" column="YN_PUBLIC" jdbcType="VARCHAR" />
-	<result property="content" column="CONTENT" jdbcType="VARCHAR" />
-	<result property="type" column="TYPE" jdbcType="VARCHAR" />
-	<result property="remindType" column="REMIND_TYPE" jdbcType="VARCHAR" />
-	<result property="sharedUserIds" column="SHARED_USER_IDS" jdbcType="VARCHAR" />
-	<result property="sharedUserCodes" column="SHARED_USER_CODES" jdbcType="VARCHAR" />
-	<result property="sharedUserNames" column="SHARED_USER_NAMES" jdbcType="VARCHAR" />
-	<result property="note" column="NOTE" jdbcType="VARCHAR" />
+	<result property="meetingId" column="MEETING_ID" jdbcType="VARCHAR" />
+	<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
 	<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
 	<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
 	<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
@@ -39,28 +24,12 @@
 	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
 	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
 	<result property="version" column="VERSION" jdbcType="DECIMAL" />
-	<result property="remindDuration" column="REMIND_DURATION" jdbcType="DECIMAL" />
 </resultMap>
 <sql id="commonColums">
 	<trim suffixOverrides=",">
 		t1.ID,
-		t1.NAME,
-		t1.AUTHOR_ID,
-		t1.AUTHOR_CODE,
-		t1.AUTHOR_NAME,
-		t1.PLACE_ID,
-		t1.PLACE_NAME,
-		t1.START_TIME,
-		t1.END_TIME,
-		t1.YN_VALID,
-		t1.YN_PUBLIC,
-		t1.CONTENT,
-		t1.TYPE,
-		t1.REMIND_TYPE,
-		t1.SHARED_USER_IDS,
-		t1.SHARED_USER_CODES,
-		t1.SHARED_USER_NAMES,
-		t1.NOTE,
+		t1.MEETING_ID,
+		t1.USER_ID,
 		t1.ATTRIBUTE_01,
 		t1.ATTRIBUTE_02,
 		t1.ATTRIBUTE_03,
@@ -80,14 +49,10 @@
 		t1.LAST_UPDATE_DATE,
 		t1.LAST_UPDATE_IP,
 		t1.VERSION,
-		t1.REMIND_DURATION,
 	</trim>
 </sql>
 <!-- 默认查询条件 -->
 <sql id="defaultWhereAnd">
-	<if test="orgIdentity != null and orgIdentity != ''">
-		and t1.org_identity = #{orgIdentity}
-	</if>
 	<if test="wordSecret != null and wordSecret.size()>0">
 		and t1.secret_level in
 		<foreach collection="wordSecret" item="item" index="key" open="(" close=")" separator=",">
@@ -99,62 +64,11 @@
 	<if test="bean.id != null and bean.id != ''">
 		and t1.ID = #{bean.id}
 	</if>
-	<if test="bean.name != null and bean.name != ''">
-		and t1.NAME like concat(concat('%',#{bean.name}),'%')
+	<if test="bean.meetingId != null and bean.meetingId != ''">
+		and t1.MEETING_ID = #{bean.meetingId}
 	</if>
-	<if test="bean.authorId != null and bean.authorId != ''">
-		and t1.AUTHOR_ID = #{bean.authorId}
-	</if>
-	<if test="bean.authorCode != null and bean.authorCode != ''">
-		and t1.AUTHOR_CODE like concat(concat('%',#{bean.authorCode}),'%')
-	</if>
-	<if test="bean.authorName != null and bean.authorName != ''">
-		and t1.AUTHOR_NAME like concat(concat('%',#{bean.authorName}),'%')
-	</if>
-	<if test="bean.placeId != null and bean.placeId != ''">
-		and t1.PLACE_ID like concat(concat('%',#{bean.placeId}),'%')
-	</if>
-	<if test="bean.placeName != null and bean.placeName != ''">
-		and t1.PLACE_NAME like concat(concat('%',#{bean.placeName}),'%')
-	</if>
-	<if test="bean.startTimeBegin != null">
-		and t1.START_TIME &gt;= #{bean.startTimeBegin}
-	</if>
-	<if test="bean.startTimeEnd != null">
-		and t1.START_TIME &lt;= #{bean.startTimeEnd}
-	</if>
-	<if test="bean.endTimeBegin != null">
-		and t1.END_TIME &gt;= #{bean.endTimeBegin}
-	</if>
-	<if test="bean.endTimeEnd != null">
-		and t1.END_TIME &lt;= #{bean.endTimeEnd}
-	</if>
-	<if test="bean.ynValid != null and bean.ynValid != ''">
-		and t1.YN_VALID = #{bean.ynValid}
-	</if>
-	<if test="bean.ynPublic != null and bean.ynPublic != ''">
-		and t1.YN_PUBLIC = #{bean.ynPublic}
-	</if>
-	<if test="bean.content != null and bean.content != ''">
-		and t1.CONTENT like concat(concat('%',#{bean.content}),'%')
-	</if>
-	<if test="bean.type != null and bean.type != ''">
-		and t1.TYPE = #{bean.type}
-	</if>
-	<if test="bean.remindType != null and bean.remindType != ''">
-		and t1.REMIND_TYPE = #{bean.remindType}
-	</if>
-	<if test="bean.sharedUserIds != null and bean.sharedUserIds != ''">
-		and t1.SHARED_USER_IDS = #{bean.sharedUserIds}
-	</if>
-	<if test="bean.sharedUserCodes != null and bean.sharedUserCodes != ''">
-		and t1.SHARED_USER_CODES like concat(concat('%',#{bean.sharedUserCodes}),'%')
-	</if>
-	<if test="bean.sharedUserNames != null and bean.sharedUserNames != ''">
-		and t1.SHARED_USER_NAMES like concat(concat('%',#{bean.sharedUserNames}),'%')
-	</if>
-	<if test="bean.note != null and bean.note != ''">
-		and t1.NOTE like concat(concat('%',#{bean.note}),'%')
+	<if test="bean.userId != null and bean.userId != ''">
+		and t1.USER_ID like concat(concat('%',#{bean.userId}),'%')
 	</if>
 	<if test="bean.attribute01 != null and bean.attribute01 != ''">
 		and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
@@ -192,9 +106,6 @@
 	<if test="bean.attribute10End != null">
 		and t1.ATTRIBUTE_10 &lt;= #{bean.attribute10End}
 	</if>
-	<if test="bean.secretLevel != null and bean.secretLevel != ''">
-		and t1.SECRET_LEVEL = #{bean.secretLevel}
-	</if>
 	<if test="bean.createdBy != null and bean.createdBy != ''">
 		and t1.CREATED_BY = #{bean.createdBy}
 	</if>
@@ -222,71 +133,14 @@
 	<if test="bean.version != null">
 		and t1.VERSION = #{bean.version}
 	</if>
-	<if test="bean.remindDuration != null">
-		and t1.REMIND_DURATION = #{bean.remindDuration}
-	</if>
 </sql>
 <sql id="commonWhereOr">
 	<trim prefix="(" suffix=")" prefixOverrides="or">
 		<if test="bean.id != null and bean.id != ''">
 			or t1.ID = #{bean.id}
 		</if>
-		<if test="bean.name != null and bean.name != ''">
-			or t1.NAME like concat(concat('%',#{bean.name}),'%')
-		</if>
-		<if test="bean.authorId != null and bean.authorId != ''">
-			or t1.AUTHOR_ID = #{bean.authorId}
-		</if>
-		<if test="bean.authorCode != null and bean.authorCode != ''">
-			or t1.AUTHOR_CODE like concat(concat('%',#{bean.authorCode}),'%')
-		</if>
-		<if test="bean.authorName != null and bean.authorName != ''">
-			or t1.AUTHOR_NAME like concat(concat('%',#{bean.authorName}),'%')
-		</if>
-		<if test="bean.placeId != null and bean.placeId != ''">
-			or t1.PLACE_ID like concat(concat('%',#{bean.placeId}),'%')
-		</if>
-		<if test="bean.placeName != null and bean.placeName != ''">
-			or t1.PLACE_NAME like concat(concat('%',#{bean.placeName}),'%')
-		</if>
-		<if test="bean.startTimeBegin != null">
-			or t1.START_TIME &gt;= #{bean.startTimeBegin}
-		</if>
-		<if test="bean.startTimeEnd != null">
-			or t1.START_TIME &lt;= #{bean.startTimeEnd}
-		</if>
-		<if test="bean.endTimeBegin != null">
-			or t1.END_TIME &gt;= #{bean.endTimeBegin}
-		</if>
-		<if test="bean.endTimeEnd != null">
-			or t1.END_TIME &lt;= #{bean.endTimeEnd}
-		</if>
-		<if test="bean.ynValid != null and bean.ynValid != ''">
-			or t1.YN_VALID = #{bean.ynValid}
-		</if>
-		<if test="bean.ynPublic != null and bean.ynPublic != ''">
-			or t1.YN_PUBLIC = #{bean.ynPublic}
-		</if>
-		<if test="bean.content != null and bean.content != ''">
-			or t1.CONTENT like concat(concat('%',#{bean.content}),'%')
-		</if>
-		<if test="bean.type != null and bean.type != ''">
-			or t1.TYPE = #{bean.type}
-		</if>
-		<if test="bean.remindType != null and bean.remindType != ''">
-			or t1.REMIND_TYPE = #{bean.remindType}
-		</if>
-		<if test="bean.sharedUserIds != null and bean.sharedUserIds != ''">
-			or t1.SHARED_USER_IDS = #{bean.sharedUserIds}
-		</if>
-		<if test="bean.sharedUserCodes != null and bean.sharedUserCodes != ''">
-			or t1.SHARED_USER_CODES like concat(concat('%',#{bean.sharedUserCodes}),'%')
-		</if>
-		<if test="bean.sharedUserNames != null and bean.sharedUserNames != ''">
-			or t1.SHARED_USER_NAMES like concat(concat('%',#{bean.sharedUserNames}),'%')
-		</if>
-		<if test="bean.note != null and bean.note != ''">
-			or t1.NOTE like concat(concat('%',#{bean.note}),'%')
+		<if test="bean.userId != null and bean.userId != ''">
+			or t1.USER_ID like concat(concat('%',#{bean.userId}),'%')
 		</if>
 		<if test="bean.attribute01 != null and bean.attribute01 != ''">
 			or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
@@ -324,6 +178,9 @@
 		<if test="bean.attribute10End != null">
 			or t1.ATTRIBUTE_10 &lt;= #{bean.attribute10End}
 		</if>
+		<if test="bean.secretLevel != null and bean.secretLevel != ''">
+			or t1.SECRET_LEVEL = #{bean.secretLevel}
+		</if>
 		<if test="bean.createdBy != null and bean.createdBy != ''">
 			or t1.CREATED_BY = #{bean.createdBy}
 		</if>
@@ -351,9 +208,6 @@
 		<if test="bean.version != null">
 			or t1.VERSION = #{bean.version}
 		</if>
-		<if test="bean.remindDuration != null">
-			or t1.REMIND_DURATION = #{bean.remindDuration}
-		</if>
 	</trim>
 </sql>
 <sql id="commonOrderBy">
@@ -367,11 +221,18 @@
 	</choose>
 </sql>
 
-<!-- 分页查询 EVENT -->
-<select id="searchEventByPage" parameterType="java.util.Map" resultMap="EventDTOMap">
+<!-- 分页查询 MEETING_USER -->
+<select id="searchMeetingUserByPage" parameterType="java.util.Map" resultMap="MeetingUserDTOMap">
 	select
 	<include refid="commonColums"/>
-	from EVENT t1   
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from MEETING_USER t where t.MEETING_ID=#{bean.meetingId}) t1
+		</when>
+		<otherwise>
+			from MEETING_USER t1
+		</otherwise>
+	</choose>
 	<where>
 		<if test="bean != null">
 			<choose>
@@ -379,7 +240,7 @@
 					<include refid="commonWhereOr"/>
 				</when>
 				<otherwise>
-					<include refid="commonWhereAnd"/>
+				    <include refid="commonWhereAnd"/>
 				</otherwise>
 			</choose>
 		</if>
@@ -387,24 +248,38 @@
 	</where>
 	<include refid="commonOrderBy"></include>
 </select>
-<!-- 查询列表 EVENT -->
-<select id="searchEvent" parameterType="java.util.Map" resultMap="EventDTOMap">
+<!-- 查询列表 MEETING_USER -->
+<select id="searchMeetingUser" parameterType="java.util.Map" resultMap="MeetingUserDTOMap">
 	select
 	<include refid="commonColums"/>
-    from EVENT 	t1
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from MEETING_USER t where t.MEETING_ID=#{bean.meetingId}) t1
+		</when>
+		<otherwise>
+			from MEETING_USER t1
+		</otherwise>
+	</choose>
 	<where>
 		<if test="bean != null">
 			<include refid="commonWhereAnd"/>
 		</if>
 		<include refid="defaultWhereAnd"/>
 	</where>
+	<include refid="commonOrderBy"></include>
 </select>
-<!-- 按条件导出查询列表 EVENT -->
-<select id="searchEventForExportExcel" parameterType="java.util.Map" resultMap="EventDTOMap">
+<!-- 按条件导出查询列表 MEETING_USER -->
+<select id="searchMeetingUserForExportExcel" parameterType="java.util.Map" resultMap="MeetingUserDTOMap">
 	select
-		<include refid="commonColums"/>
-		from EVENT t1
-
+	<include refid="commonColums"/>
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from MEETING_USER t where t.MEETING_ID=#{bean.meetingId}) t1
+		</when>
+		<otherwise>
+			from MEETING_USER t1
+		</otherwise>
+	</choose>
 	<where>
 		<if test="bean != null">
 			<choose>
@@ -420,70 +295,32 @@
 	</where>
 	<include refid="commonOrderBy"/>
 </select>
-<!-- 主键查询对象 EVENT -->
-<select id="findEventById" parameterType="java.util.Map" resultMap="EventDTOMap">
+<!-- 主键查询对象 MEETING_USER -->
+<select id="findMeetingUserById" parameterType="java.util.Map" resultMap="MeetingUserDTOMap">
 	select
 	<include refid="commonColums"/>
-	from EVENT t1
+	from MEETING_USER t1
 	where t1.id = #{id}
 </select>
-<!-- 新增对象 EVENT -->
-<insert id="insertEvent" parameterType="avicit.myportal.event.event.dto.EventDTO">
-	insert into EVENT
+<!-- 根据pid查询对象 MEETING_USER -->
+<select id="findMeetingUserByPid" parameterType="java.util.Map" resultMap="MeetingUserDTOMap">
+	select
+	<include refid="commonColums"></include>
+	from MEETING_USER 	t1
+	where t1.MEETING_ID = #{pid}
+</select>
+<!-- 新增对象 MEETING_USER -->
+<insert id="insertMeetingUser" parameterType="avicit.myportal.meeting.meetinguser.dto.MeetingUserDTO">
+	insert into MEETING_USER
 	<trim prefix="(" suffix=")" suffixOverrides=",">
 		<if test="id != null">
 			ID,
 		</if>
-		<if test="name != null">
-			NAME,
+		<if test="meetingId != null">
+			MEETING_ID,
 		</if>
-		<if test="authorId != null">
-			AUTHOR_ID,
-		</if>
-		<if test="authorCode != null">
-			AUTHOR_CODE,
-		</if>
-		<if test="authorName != null">
-			AUTHOR_NAME,
-		</if>
-		<if test="placeId != null">
-			PLACE_ID,
-		</if>
-		<if test="placeName != null">
-			PLACE_NAME,
-		</if>
-		<if test="startTime != null">
-			START_TIME,
-		</if>
-		<if test="endTime != null">
-			END_TIME,
-		</if>
-		<if test="ynValid != null">
-			YN_VALID,
-		</if>
-		<if test="ynPublic != null">
-			YN_PUBLIC,
-		</if>
-		<if test="content != null">
-			CONTENT,
-		</if>
-		<if test="type != null">
-			TYPE,
-		</if>
-		<if test="remindType != null">
-			REMIND_TYPE,
-		</if>
-		<if test="sharedUserIds != null">
-			SHARED_USER_IDS,
-		</if>
-		<if test="sharedUserCodes != null">
-			SHARED_USER_CODES,
-		</if>
-		<if test="sharedUserNames != null">
-			SHARED_USER_NAMES,
-		</if>
-		<if test="note != null">
-			NOTE,
+		<if test="userId != null">
+			USER_ID,
 		</if>
 		<if test="attribute01 != null">
 			ATTRIBUTE_01,
@@ -542,64 +379,16 @@
 		<if test="version != null">
 			VERSION,
 		</if>
-		<if test="remindDuration != null">
-			REMIND_DURATION,
-		</if>
 	</trim>
 	<trim prefix="values (" suffix=")" suffixOverrides=",">
 		<if test="id != null">
 			#{id,jdbcType = VARCHAR},
 		</if>
-		<if test="name != null">
-			#{name,jdbcType = VARCHAR},
+		<if test="meetingId != null">
+			#{meetingId,jdbcType = VARCHAR},
 		</if>
-		<if test="authorId != null">
-			#{authorId,jdbcType = VARCHAR},
-		</if>
-		<if test="authorCode != null">
-			#{authorCode,jdbcType = VARCHAR},
-		</if>
-		<if test="authorName != null">
-			#{authorName,jdbcType = VARCHAR},
-		</if>
-		<if test="placeId != null">
-			#{placeId,jdbcType = VARCHAR},
-		</if>
-		<if test="placeName != null">
-			#{placeName,jdbcType = VARCHAR},
-		</if>
-		<if test="startTime != null">
-			#{startTime,jdbcType = TIMESTAMP},
-		</if>
-		<if test="endTime != null">
-			#{endTime,jdbcType = TIMESTAMP},
-		</if>
-		<if test="ynValid != null">
-			#{ynValid,jdbcType = VARCHAR},
-		</if>
-		<if test="ynPublic != null">
-			#{ynPublic,jdbcType = VARCHAR},
-		</if>
-		<if test="content != null">
-			#{content,jdbcType = VARCHAR},
-		</if>
-		<if test="type != null">
-			#{type,jdbcType = VARCHAR},
-		</if>
-		<if test="remindType != null">
-			#{remindType,jdbcType = VARCHAR},
-		</if>
-		<if test="sharedUserIds != null">
-			#{sharedUserIds,jdbcType = VARCHAR},
-		</if>
-		<if test="sharedUserCodes != null">
-			#{sharedUserCodes,jdbcType = VARCHAR},
-		</if>
-		<if test="sharedUserNames != null">
-			#{sharedUserNames,jdbcType = VARCHAR},
-		</if>
-		<if test="note != null">
-			#{note,jdbcType = VARCHAR},
+		<if test="userId != null">
+			#{userId,jdbcType = VARCHAR},
 		</if>
 		<if test="attribute01 != null">
 			#{attribute01,jdbcType = VARCHAR},
@@ -658,32 +447,14 @@
 		<if test="version != null">
 			#{version,jdbcType = DECIMAL},
 		</if>
-		<if test="remindDuration != null">
-			#{remindDuration,jdbcType = DECIMAL},
-		</if>
 	</trim>
 </insert>
-<!-- 批量新增对象 EVENT -->
-<insert id="insertEventList" parameterType="java.util.List" >
-	insert into EVENT(
+<!-- 批量新增对象 MEETING_USER -->
+<insert id="insertMeetingUserList" parameterType="java.util.List" >
+	insert into MEETING_USER(
 		ID ,
-		NAME ,
-		AUTHOR_ID ,
-		AUTHOR_CODE ,
-		AUTHOR_NAME ,
-		PLACE_ID ,
-		PLACE_NAME ,
-		START_TIME ,
-		END_TIME ,
-		YN_VALID ,
-		YN_PUBLIC ,
-		CONTENT ,
-		TYPE ,
-		REMIND_TYPE ,
-		SHARED_USER_IDS ,
-		SHARED_USER_CODES ,
-		SHARED_USER_NAMES ,
-		NOTE ,
+		MEETING_ID ,
+		USER_ID ,
 		ATTRIBUTE_01 ,
 		ATTRIBUTE_02 ,
 		ATTRIBUTE_03 ,
@@ -702,29 +473,13 @@
 		LAST_UPDATED_BY ,
 		LAST_UPDATE_DATE ,
 		LAST_UPDATE_IP ,
-		VERSION ,
-		REMIND_DURATION 
+		VERSION 
 	)
 	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
 		select
 			#{item.id,jdbcType = VARCHAR} ,
-			#{item.name,jdbcType = VARCHAR} ,
-			#{item.authorId,jdbcType = VARCHAR} ,
-			#{item.authorCode,jdbcType = VARCHAR} ,
-			#{item.authorName,jdbcType = VARCHAR} ,
-			#{item.placeId,jdbcType = VARCHAR} ,
-			#{item.placeName,jdbcType = VARCHAR} ,
-			#{item.startTime,jdbcType = TIMESTAMP} ,
-			#{item.endTime,jdbcType = TIMESTAMP} ,
-			#{item.ynValid,jdbcType = VARCHAR} ,
-			#{item.ynPublic,jdbcType = VARCHAR} ,
-			#{item.content,jdbcType = VARCHAR} ,
-			#{item.type,jdbcType = VARCHAR} ,
-			#{item.remindType,jdbcType = VARCHAR} ,
-			#{item.sharedUserIds,jdbcType = VARCHAR} ,
-			#{item.sharedUserCodes,jdbcType = VARCHAR} ,
-			#{item.sharedUserNames,jdbcType = VARCHAR} ,
-			#{item.note,jdbcType = VARCHAR} ,
+			#{item.meetingId,jdbcType = VARCHAR} ,
+			#{item.userId,jdbcType = VARCHAR} ,
 			#{item.attribute01,jdbcType = VARCHAR} ,
 			#{item.attribute02,jdbcType = VARCHAR} ,
 			#{item.attribute03,jdbcType = VARCHAR} ,
@@ -743,68 +498,22 @@
 			#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
 			#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
 			#{item.lastUpdateIp,jdbcType = VARCHAR} ,
-			#{item.version,jdbcType = DECIMAL} ,
-			#{item.remindDuration,jdbcType = DECIMAL} 
+			#{item.version,jdbcType = DECIMAL} 
 		from dual
 	</foreach>
 </insert>
-<!-- 更新对象 EVENT -->
-<update id="updateEventSensitive" parameterType="avicit.myportal.event.event.dto.EventDTO">
-	update EVENT
+<!-- 更新对象 MEETING_USER -->
+<update id="updateMeetingUserSensitive" parameterType="avicit.myportal.meeting.meetinguser.dto.MeetingUserDTO">
+	update MEETING_USER
 	<set>
 		<if test="id != null">
 			ID = #{id,jdbcType = VARCHAR} ,
 		</if>
-		<if test="name != null">
-			NAME = #{name,jdbcType = VARCHAR} ,
+		<if test="meetingId != null">
+			MEETING_ID = #{meetingId,jdbcType = VARCHAR} ,
 		</if>
-		<if test="authorId != null">
-			AUTHOR_ID = #{authorId,jdbcType = VARCHAR} ,
-		</if>
-		<if test="authorCode != null">
-			AUTHOR_CODE = #{authorCode,jdbcType = VARCHAR} ,
-		</if>
-		<if test="authorName != null">
-			AUTHOR_NAME = #{authorName,jdbcType = VARCHAR} ,
-		</if>
-		<if test="placeId != null">
-			PLACE_ID = #{placeId,jdbcType = VARCHAR} ,
-		</if>
-		<if test="placeName != null">
-			PLACE_NAME = #{placeName,jdbcType = VARCHAR} ,
-		</if>
-		<if test="startTime != null">
-			START_TIME = #{startTime,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="endTime != null">
-			END_TIME = #{endTime,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="ynValid != null">
-			YN_VALID = #{ynValid,jdbcType = VARCHAR} ,
-		</if>
-		<if test="ynPublic != null">
-			YN_PUBLIC = #{ynPublic,jdbcType = VARCHAR} ,
-		</if>
-		<if test="content != null">
-			CONTENT = #{content,jdbcType = VARCHAR} ,
-		</if>
-		<if test="type != null">
-			TYPE = #{type,jdbcType = VARCHAR} ,
-		</if>
-		<if test="remindType != null">
-			REMIND_TYPE = #{remindType,jdbcType = VARCHAR} ,
-		</if>
-		<if test="sharedUserIds != null">
-			SHARED_USER_IDS = #{sharedUserIds,jdbcType = VARCHAR} ,
-		</if>
-		<if test="sharedUserCodes != null">
-			SHARED_USER_CODES = #{sharedUserCodes,jdbcType = VARCHAR} ,
-		</if>
-		<if test="sharedUserNames != null">
-			SHARED_USER_NAMES = #{sharedUserNames,jdbcType = VARCHAR} ,
-		</if>
-		<if test="note != null">
-			NOTE = #{note,jdbcType = VARCHAR} ,
+		<if test="userId != null">
+			USER_ID = #{userId,jdbcType = VARCHAR} ,
 		</if>
 		<if test="attribute01 != null">
 			ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
@@ -861,37 +570,18 @@
 			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
 		</if>
 		<if test="version != null">
-			VERSION = version+1 ,
-		</if>
-		<if test="remindDuration != null">
-			REMIND_DURATION = #{remindDuration,jdbcType = DECIMAL} 
+			VERSION = version+1 
 		</if>
 	</set>
 	where id = #{id} 
 	and version = #{version}
 </update>
-<!-- 更新对象 EVENT -->
-<update id="updateEventAll" parameterType="avicit.myportal.event.event.dto.EventDTO">
-	update EVENT
+<!-- 更新对象 MEETING_USER -->
+<update id="updateMeetingUserAll" parameterType="avicit.myportal.meeting.meetinguser.dto.MeetingUserDTO">
+	update MEETING_USER
 	<trim prefix="set" suffixOverrides=",">
 		ID = #{id,jdbcType = VARCHAR} ,
-		NAME = #{name,jdbcType = VARCHAR} ,
-		AUTHOR_ID = #{authorId,jdbcType = VARCHAR} ,
-		AUTHOR_CODE = #{authorCode,jdbcType = VARCHAR} ,
-		AUTHOR_NAME = #{authorName,jdbcType = VARCHAR} ,
-		PLACE_ID = #{placeId,jdbcType = VARCHAR} ,
-		PLACE_NAME = #{placeName,jdbcType = VARCHAR} ,
-		START_TIME = #{startTime,jdbcType = TIMESTAMP} ,
-		END_TIME = #{endTime,jdbcType = TIMESTAMP} ,
-		YN_VALID = #{ynValid,jdbcType = VARCHAR} ,
-		YN_PUBLIC = #{ynPublic,jdbcType = VARCHAR} ,
-		CONTENT = #{content,jdbcType = VARCHAR} ,
-		TYPE = #{type,jdbcType = VARCHAR} ,
-		REMIND_TYPE = #{remindType,jdbcType = VARCHAR} ,
-		SHARED_USER_IDS = #{sharedUserIds,jdbcType = VARCHAR} ,
-		SHARED_USER_CODES = #{sharedUserCodes,jdbcType = VARCHAR} ,
-		SHARED_USER_NAMES = #{sharedUserNames,jdbcType = VARCHAR} ,
-		NOTE = #{note,jdbcType = VARCHAR} ,
+		USER_ID = #{userId,jdbcType = VARCHAR} ,
 		ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
 		ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
 		ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
@@ -906,36 +596,20 @@
 		LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
 		LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
 		LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
-		VERSION = version+1 ,
-		REMIND_DURATION = #{remindDuration,jdbcType = DECIMAL} 
+		VERSION = version+1 
 	</trim>
 	where id = #{id}
 	and version = #{version}
 </update>
-<!-- 批量更新对象   EVENT -->
-<update id="updateEventList" parameterType="java.util.List">
+<!-- 批量更新对象   MEETING_USER -->
+<update id="updateMeetingUserList" parameterType="java.util.List" >
 	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
-	<foreach collection="dtoList" item="item" index="index"  separator="" close="">
-		update EVENT
-		set
+	<foreach collection="dtoList" item="item" index="index"  separator="" >
+		update MEETING_USER
+		<set>
 			ID = #{item.id,jdbcType = VARCHAR} ,
-			NAME = #{item.name,jdbcType = VARCHAR} ,
-			AUTHOR_ID = #{item.authorId,jdbcType = VARCHAR} ,
-			AUTHOR_CODE = #{item.authorCode,jdbcType = VARCHAR} ,
-			AUTHOR_NAME = #{item.authorName,jdbcType = VARCHAR} ,
-			PLACE_ID = #{item.placeId,jdbcType = VARCHAR} ,
-			PLACE_NAME = #{item.placeName,jdbcType = VARCHAR} ,
-			START_TIME = #{item.startTime,jdbcType = TIMESTAMP} ,
-			END_TIME = #{item.endTime,jdbcType = TIMESTAMP} ,
-			YN_VALID = #{item.ynValid,jdbcType = VARCHAR} ,
-			YN_PUBLIC = #{item.ynPublic,jdbcType = VARCHAR} ,
-			CONTENT = #{item.content,jdbcType = VARCHAR} ,
-			TYPE = #{item.type,jdbcType = VARCHAR} ,
-			REMIND_TYPE = #{item.remindType,jdbcType = VARCHAR} ,
-			SHARED_USER_IDS = #{item.sharedUserIds,jdbcType = VARCHAR} ,
-			SHARED_USER_CODES = #{item.sharedUserCodes,jdbcType = VARCHAR} ,
-			SHARED_USER_NAMES = #{item.sharedUserNames,jdbcType = VARCHAR} ,
-			NOTE = #{item.note,jdbcType = VARCHAR} ,
+			MEETING_ID = #{item.meetingId,jdbcType = VARCHAR} ,
+			USER_ID = #{item.userId,jdbcType = VARCHAR} ,
 			ATTRIBUTE_01 = #{item.attribute01,jdbcType = VARCHAR} ,
 			ATTRIBUTE_02 = #{item.attribute02,jdbcType = VARCHAR} ,
 			ATTRIBUTE_03 = #{item.attribute03,jdbcType = VARCHAR} ,
@@ -954,15 +628,15 @@
 			LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
 			LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
 			LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
-			VERSION = version+1  ,
-			REMIND_DURATION = #{item.remindDuration,jdbcType = DECIMAL} 
+			VERSION = version+1  
+		</set>
 		where id = #{item.id}
 		and version = #{item.version};
 	</foreach>
 	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
 </update>
-<!-- 主键删除 EVENT -->
-<delete id="deleteEventById" parameterType="java.lang.String">
-	delete from EVENT  where id = #{id}
+<!-- 主键删除 MEETING_USER -->
+<delete id="deleteMeetingUserById" parameterType="java.lang.String">
+	delete from MEETING_USER  where id = #{id}
 </delete>
 </mapper>

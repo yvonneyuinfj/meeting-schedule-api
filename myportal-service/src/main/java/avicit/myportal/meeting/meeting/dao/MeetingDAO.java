@@ -10,8 +10,8 @@ import java.util.List;
 * @金航数码科技有限责任公司
 * @作者：yxy
 * @邮箱：yxy@avic.com
-* @创建时间： 2024-01-15 15:48
-* @类说明：会议表Dao
+* @创建时间： 2024-01-19 16:06
+* @类说明：会议日程信息表Dao
 * @修改记录：
 */
 public interface MeetingDAO {
@@ -35,6 +35,7 @@ public interface MeetingDAO {
 	 * @return List<MeetingDTO>
 	 */
 	public List<MeetingDTO> searchMeeting(@Param("bean") MeetingDTO meetingDTO, @Param("orgIdentity") String orgIdentity, @Param("wordSecret") List<String> wordSecret);
+	public List<MeetingDTO> searchMeetingsByUserId(@Param("bean") MeetingDTO meetingDTO, @Param("orgIdentity") String orgIdentity, @Param("wordSecret") List<String> wordSecret, @Param("orderBy") String orderBy, @Param("keyWords") String keyWords);
 
 	/**
 	 * 按条件导出查询

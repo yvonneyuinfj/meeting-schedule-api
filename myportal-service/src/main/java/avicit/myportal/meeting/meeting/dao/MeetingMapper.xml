@@ -1,1082 +1,1464 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="avicit.myportal.meeting.meeting.dao.MeetingDAO">
-<resultMap id="MeetingDTOMap" type="avicit.myportal.meeting.meeting.dto.MeetingDTO">
-	<result property="id" column="ID" jdbcType="VARCHAR" />
-	<result property="name" column="NAME" jdbcType="VARCHAR" />
-	<result property="authorId" column="AUTHOR_ID" jdbcType="VARCHAR" />
-	<result property="authorCode" column="AUTHOR_CODE" jdbcType="VARCHAR" />
-	<result property="authorName" column="AUTHOR_NAME" jdbcType="VARCHAR" />
-	<result property="meetingRoomId" column="MEETING_ROOM_ID" jdbcType="VARCHAR" />
-	<result property="meetingRoomName" column="MEETING_ROOM_NAME" jdbcType="VARCHAR" />
-	<result property="ynApprove" column="YN_APPROVE" jdbcType="VARCHAR" />
-	<result property="preStartTime" column="PRE_START_TIME" jdbcType="TIMESTAMP" />
-	<result property="startTime" column="START_TIME" jdbcType="TIMESTAMP" />
-	<result property="endTime" column="END_TIME" jdbcType="TIMESTAMP" />
-	<result property="hostId" column="HOST_ID" jdbcType="VARCHAR" />
-	<result property="hostCode" column="HOST_CODE" jdbcType="VARCHAR" />
-	<result property="hostName" column="HOST_NAME" jdbcType="VARCHAR" />
-	<result property="ynValid" column="YN_VALID" jdbcType="VARCHAR" />
-	<result property="content" column="CONTENT" jdbcType="VARCHAR" />
-	<result property="meetingTypeId" column="MEETING_TYPE_ID" jdbcType="VARCHAR" />
-	<result property="meetingTypeCode" column="MEETING_TYPE_CODE" jdbcType="VARCHAR" />
-	<result property="meetingTypeName" column="MEETING_TYPE_NAME" jdbcType="VARCHAR" />
-	<result property="attendeeIds" column="ATTENDEE_IDS" jdbcType="VARCHAR" />
-	<result property="attendeeCodes" column="ATTENDEE_CODES" jdbcType="VARCHAR" />
-	<result property="attendeeNames" column="ATTENDEE_NAMES" jdbcType="VARCHAR" />
-	<result property="note" column="NOTE" jdbcType="VARCHAR" />
-	<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
-	<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
-	<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
-	<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
-	<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
-	<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
-	<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
-	<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
-	<result property="attribute09" column="ATTRIBUTE_09" jdbcType="TIMESTAMP" />
-	<result property="attribute10" column="ATTRIBUTE_10" jdbcType="TIMESTAMP" />
-	<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
-	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
-	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
-	<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
-	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
-	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
-	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
-	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
-	<result property="version" column="VERSION" jdbcType="DECIMAL" />
-	<result property="dbid_" column="dbid_" jdbcType="VARCHAR" />
-	<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
-	<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
-	<result property="assigneenames_" column="assigneenames_" jdbcType="VARCHAR" />
+    <resultMap id="MeetingDTOMap" type="avicit.myportal.meeting.meeting.dto.MeetingDTO">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+        <result property="authorId" column="AUTHOR_ID" jdbcType="VARCHAR"/>
+        <result property="authorCode" column="AUTHOR_CODE" jdbcType="VARCHAR"/>
+        <result property="authorName" column="AUTHOR_NAME" jdbcType="VARCHAR"/>
+        <result property="meetingRoomId" column="MEETING_ROOM_ID" jdbcType="VARCHAR"/>
+        <result property="meetingRoomName" column="MEETING_ROOM_NAME" jdbcType="VARCHAR"/>
+        <result property="placeId" column="PLACE_ID" jdbcType="VARCHAR"/>
+        <result property="placeName" column="PLACE_NAME" jdbcType="VARCHAR"/>
+        <result property="ynApprove" column="YN_APPROVE" jdbcType="VARCHAR"/>
+        <result property="approvalIds" column="APPROVAL_IDS" jdbcType="VARCHAR"/>
+        <result property="approvalCodes" column="APPROVAL_CODES" jdbcType="VARCHAR"/>
+        <result property="approvalNames" column="APPROVAL_NAMES" jdbcType="VARCHAR"/>
+        <result property="approvalState" column="APPROVAL_STATE" jdbcType="VARCHAR"/>
+        <result property="preStartTime" column="PRE_START_TIME" jdbcType="TIMESTAMP"/>
+        <result property="startTime" column="START_TIME" jdbcType="TIMESTAMP"/>
+        <result property="endTime" column="END_TIME" jdbcType="TIMESTAMP"/>
+        <result property="hostId" column="HOST_ID" jdbcType="VARCHAR"/>
+        <result property="hostCode" column="HOST_CODE" jdbcType="VARCHAR"/>
+        <result property="hostName" column="HOST_NAME" jdbcType="VARCHAR"/>
+        <result property="orgDeptId" column="ORG_DEPT_ID" jdbcType="VARCHAR"/>
+        <result property="orgDeptCode" column="ORG_DEPT_CODE" jdbcType="VARCHAR"/>
+        <result property="orgDeptName" column="ORG_DEPT_NAME" jdbcType="VARCHAR"/>
+        <result property="ynValid" column="YN_VALID" jdbcType="VARCHAR"/>
+        <result property="ynPublic" column="YN_PUBLIC" jdbcType="VARCHAR"/>
+        <result property="ynNewPlace" column="YN_NEW_PLACE" jdbcType="VARCHAR"/>
+        <result property="ynShowEvent" column="YN_SHOW_EVENT" jdbcType="VARCHAR"/>
+        <result property="phoneNumber" column="PHONE_NUMBER" jdbcType="VARCHAR"/>
+        <result property="content" column="CONTENT" jdbcType="VARCHAR"/>
+        <result property="meetingTypeId" column="MEETING_TYPE_ID" jdbcType="VARCHAR"/>
+        <result property="meetingTypeCode" column="MEETING_TYPE_CODE" jdbcType="VARCHAR"/>
+        <result property="meetingTypeName" column="MEETING_TYPE_NAME" jdbcType="VARCHAR"/>
+        <result property="attendeeIds" column="ATTENDEE_IDS" jdbcType="VARCHAR"/>
+        <result property="attendeeCodes" column="ATTENDEE_CODES" jdbcType="VARCHAR"/>
+        <result property="attendeeNames" column="ATTENDEE_NAMES" jdbcType="VARCHAR"/>
+        <result property="eventType" column="EVENT_TYPE" jdbcType="VARCHAR"/>
+        <result property="remindType" column="REMIND_TYPE" jdbcType="VARCHAR"/>
+        <result property="remindDuration" column="REMIND_DURATION" jdbcType="DECIMAL"/>
+        <result property="bgColor" column="BG_COLOR" jdbcType="VARCHAR"/>
+        <result property="note" column="NOTE" jdbcType="VARCHAR"/>
+        <result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR"/>
+        <result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR"/>
+        <result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR"/>
+        <result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR"/>
+        <result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR"/>
+        <result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR"/>
+        <result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR"/>
+        <result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR"/>
+        <result property="attribute09" column="ATTRIBUTE_09" jdbcType="TIMESTAMP"/>
+        <result property="attribute10" column="ATTRIBUTE_10" jdbcType="TIMESTAMP"/>
+        <result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR"/>
+        <result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR"/>
+        <result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR"/>
+        <result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR"/>
+        <result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR"/>
+        <result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR"/>
+        <result property="version" column="VERSION" jdbcType="DECIMAL"/>
+        <result property="dbid_" column="dbid_" jdbcType="VARCHAR"/>
+        <result property="activityalias_" column="activityalias_" jdbcType="VARCHAR"/>
+        <result property="businessstate_" column="businessstate_" jdbcType="VARCHAR"/>
+        <result property="assigneenames_" column="assigneenames_" jdbcType="VARCHAR"/>
 
-</resultMap>
-<sql id="commonColums">
-	<trim suffixOverrides=",">
-		t1.ID,
-		t1.NAME,
-		t1.AUTHOR_ID,
-		t1.AUTHOR_CODE,
-		t1.AUTHOR_NAME,
-		t1.MEETING_ROOM_ID,
-		t1.MEETING_ROOM_NAME,
-		t1.YN_APPROVE,
-		t1.PRE_START_TIME,
-		t1.START_TIME,
-		t1.END_TIME,
-		t1.HOST_ID,
-		t1.HOST_CODE,
-		t1.HOST_NAME,
-		t1.YN_VALID,
-		t1.CONTENT,
-		t1.MEETING_TYPE_ID,
-		t1.MEETING_TYPE_CODE,
-		t1.MEETING_TYPE_NAME,
-		t1.ATTENDEE_IDS,
-		t1.ATTENDEE_CODES,
-		t1.ATTENDEE_NAMES,
-		t1.NOTE,
-		t1.ATTRIBUTE_01,
-		t1.ATTRIBUTE_02,
-		t1.ATTRIBUTE_03,
-		t1.ATTRIBUTE_04,
-		t1.ATTRIBUTE_05,
-		t1.ATTRIBUTE_06,
-		t1.ATTRIBUTE_07,
-		t1.ATTRIBUTE_08,
-		t1.ATTRIBUTE_09,
-		t1.ATTRIBUTE_10,
-		t1.SECRET_LEVEL,
-		t1.ORG_IDENTITY,
-		t1.CREATED_BY,
-		t1.CREATED_DEPT,
-		t1.CREATION_DATE,
-		t1.LAST_UPDATED_BY,
-		t1.LAST_UPDATE_DATE,
-		t1.LAST_UPDATE_IP,
-		t1.VERSION,
-	</trim>
-</sql>
-<!-- 默认查询条件 -->
-<sql id="defaultWhereAnd">
-	<if test="orgIdentity != null and orgIdentity != ''">
-		and t1.org_identity = #{orgIdentity}
-	</if>
-	<if test="wordSecret != null and wordSecret.size()>0">
-		and t1.secret_level in
-		<foreach collection="wordSecret" item="item" index="key" open="(" close=")" separator=",">
-			#{item}
-		</foreach>
-	</if>
-</sql>
-<sql id="commonWhereAnd">
-	<if test="bean.id != null and bean.id != ''">
-		and t1.ID = #{bean.id}
-	</if>
-	<if test="bean.name != null and bean.name != ''">
-		and t1.NAME like concat(concat('%',#{bean.name}),'%')
-	</if>
-	<if test="bean.authorId != null and bean.authorId != ''">
-		and t1.AUTHOR_ID = #{bean.authorId}
-	</if>
-	<if test="bean.authorCode != null and bean.authorCode != ''">
-		and t1.AUTHOR_CODE like concat(concat('%',#{bean.authorCode}),'%')
-	</if>
-	<if test="bean.authorName != null and bean.authorName != ''">
-		and t1.AUTHOR_NAME like concat(concat('%',#{bean.authorName}),'%')
-	</if>
-	<if test="bean.meetingRoomName != null and bean.meetingRoomName != ''">
-		and t1.MEETING_ROOM_NAME like concat(concat('%',#{bean.meetingRoomName}),'%')
-	</if>
-	<if test="bean.ynApprove != null and bean.ynApprove != ''">
-		and t1.YN_APPROVE = #{bean.ynApprove}
-	</if>
-	<if test="bean.preStartTimeBegin != null">
-		and t1.PRE_START_TIME &gt;= #{bean.preStartTimeBegin}
-	</if>
-	<if test="bean.preStartTimeEnd != null">
-		and t1.PRE_START_TIME &lt;= #{bean.preStartTimeEnd}
-	</if>
-	<if test="bean.startTimeBegin != null">
-		and t1.START_TIME &gt;= #{bean.startTimeBegin}
-	</if>
-	<if test="bean.startTimeEnd != null">
-		and t1.START_TIME &lt;= #{bean.startTimeEnd}
-	</if>
-	<if test="bean.endTimeBegin != null">
-		and t1.END_TIME &gt;= #{bean.endTimeBegin}
-	</if>
-	<if test="bean.endTimeEnd != null">
-		and t1.END_TIME &lt;= #{bean.endTimeEnd}
-	</if>
-	<if test="bean.hostId != null and bean.hostId != ''">
-		and t1.HOST_ID = #{bean.hostId}
-	</if>
-	<if test="bean.hostCode != null and bean.hostCode != ''">
-		and t1.HOST_CODE like concat(concat('%',#{bean.hostCode}),'%')
-	</if>
-	<if test="bean.hostName != null and bean.hostName != ''">
-		and t1.HOST_NAME like concat(concat('%',#{bean.hostName}),'%')
-	</if>
-	<if test="bean.ynValid != null and bean.ynValid != ''">
-		and t1.YN_VALID = #{bean.ynValid}
-	</if>
-	<if test="bean.content != null and bean.content != ''">
-		and t1.CONTENT like concat(concat('%',#{bean.content}),'%')
-	</if>
-	<if test="bean.meetingTypeId != null and bean.meetingTypeId != ''">
-		and t1.MEETING_TYPE_ID like concat(concat('%',#{bean.meetingTypeId}),'%')
-	</if>
-	<if test="bean.meetingTypeCode != null and bean.meetingTypeCode != ''">
-		and t1.MEETING_TYPE_CODE like concat(concat('%',#{bean.meetingTypeCode}),'%')
-	</if>
-	<if test="bean.meetingTypeName != null and bean.meetingTypeName != ''">
-		and t1.MEETING_TYPE_NAME like concat(concat('%',#{bean.meetingTypeName}),'%')
-	</if>
-	<if test="bean.attendeeIds != null and bean.attendeeIds != ''">
-		and t1.ATTENDEE_IDS = #{bean.attendeeIds}
-	</if>
-	<if test="bean.attendeeCodes != null and bean.attendeeCodes != ''">
-		and t1.ATTENDEE_CODES like concat(concat('%',#{bean.attendeeCodes}),'%')
-	</if>
-	<if test="bean.attendeeNames != null and bean.attendeeNames != ''">
-		and t1.ATTENDEE_NAMES like concat(concat('%',#{bean.attendeeNames}),'%')
-	</if>
-	<if test="bean.note != null and bean.note != ''">
-		and t1.NOTE like concat(concat('%',#{bean.note}),'%')
-	</if>
-	<if test="bean.attribute01 != null and bean.attribute01 != ''">
-		and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
-	</if>
-	<if test="bean.attribute02 != null and bean.attribute02 != ''">
-		and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
-	</if>
-	<if test="bean.attribute03 != null and bean.attribute03 != ''">
-		and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
-	</if>
-	<if test="bean.attribute04 != null and bean.attribute04 != ''">
-		and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
-	</if>
-	<if test="bean.attribute05 != null and bean.attribute05 != ''">
-		and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
-	</if>
-	<if test="bean.attribute06 != null and bean.attribute06 != ''">
-		and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
-	</if>
-	<if test="bean.attribute07 != null and bean.attribute07 != ''">
-		and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
-	</if>
-	<if test="bean.attribute08 != null and bean.attribute08 != ''">
-		and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
-	</if>
-	<if test="bean.attribute09Begin != null">
-		and t1.ATTRIBUTE_09 &gt;= #{bean.attribute09Begin}
-	</if>
-	<if test="bean.attribute09End != null">
-		and t1.ATTRIBUTE_09 &lt;= #{bean.attribute09End}
-	</if>
-	<if test="bean.attribute10Begin != null">
-		and t1.ATTRIBUTE_10 &gt;= #{bean.attribute10Begin}
-	</if>
-	<if test="bean.attribute10End != null">
-		and t1.ATTRIBUTE_10 &lt;= #{bean.attribute10End}
-	</if>
-	<if test="bean.secretLevel != null and bean.secretLevel != ''">
-		and t1.SECRET_LEVEL = #{bean.secretLevel}
-	</if>
-	<if test="bean.createdBy != null and bean.createdBy != ''">
-		and t1.CREATED_BY = #{bean.createdBy}
-	</if>
-	<if test="bean.createdDept != null and bean.createdDept != ''">
-		and t1.CREATED_DEPT = #{bean.createdDept}
-	</if>
-	<if test="bean.creationDateBegin != null">
-		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
-	</if>
-	<if test="bean.creationDateEnd != null">
-		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
-	</if>
-	<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
-		and t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
-	</if>
-	<if test="bean.lastUpdateDateBegin != null">
-		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
-	</if>
-	<if test="bean.lastUpdateDateEnd != null">
-		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
-	</if>
-	<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
-		and t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
-	</if>
-	<if test="bean.version != null">
-		and t1.VERSION = #{bean.version}
-	</if>
-</sql>
-<sql id="commonWhereOr">
-	<trim prefix="(" suffix=")" prefixOverrides="or">
-		<if test="bean.id != null and bean.id != ''">
-			or t1.ID = #{bean.id}
-		</if>
-		<if test="bean.name != null and bean.name != ''">
-			or t1.NAME like concat(concat('%',#{bean.name}),'%')
-		</if>
-		<if test="bean.authorId != null and bean.authorId != ''">
-			or t1.AUTHOR_ID = #{bean.authorId}
-		</if>
-		<if test="bean.authorCode != null and bean.authorCode != ''">
-			or t1.AUTHOR_CODE like concat(concat('%',#{bean.authorCode}),'%')
-		</if>
-		<if test="bean.authorName != null and bean.authorName != ''">
-			or t1.AUTHOR_NAME like concat(concat('%',#{bean.authorName}),'%')
-		</if>
-		<if test="bean.meetingRoomName != null and bean.meetingRoomName != ''">
-			or t1.MEETING_ROOM_NAME like concat(concat('%',#{bean.meetingRoomName}),'%')
-		</if>
-		<if test="bean.ynApprove != null and bean.ynApprove != ''">
-			or t1.YN_APPROVE = #{bean.ynApprove}
-		</if>
-		<if test="bean.preStartTimeBegin != null">
-			or t1.PRE_START_TIME &gt;= #{bean.preStartTimeBegin}
-		</if>
-		<if test="bean.preStartTimeEnd != null">
-			or t1.PRE_START_TIME &lt;= #{bean.preStartTimeEnd}
-		</if>
-		<if test="bean.startTimeBegin != null">
-			or t1.START_TIME &gt;= #{bean.startTimeBegin}
-		</if>
-		<if test="bean.startTimeEnd != null">
-			or t1.START_TIME &lt;= #{bean.startTimeEnd}
-		</if>
-		<if test="bean.endTimeBegin != null">
-			or t1.END_TIME &gt;= #{bean.endTimeBegin}
-		</if>
-		<if test="bean.endTimeEnd != null">
-			or t1.END_TIME &lt;= #{bean.endTimeEnd}
-		</if>
-		<if test="bean.hostId != null and bean.hostId != ''">
-			or t1.HOST_ID = #{bean.hostId}
-		</if>
-		<if test="bean.hostCode != null and bean.hostCode != ''">
-			or t1.HOST_CODE like concat(concat('%',#{bean.hostCode}),'%')
-		</if>
-		<if test="bean.hostName != null and bean.hostName != ''">
-			or t1.HOST_NAME like concat(concat('%',#{bean.hostName}),'%')
-		</if>
-		<if test="bean.ynValid != null and bean.ynValid != ''">
-			or t1.YN_VALID = #{bean.ynValid}
-		</if>
-		<if test="bean.content != null and bean.content != ''">
-			or t1.CONTENT like concat(concat('%',#{bean.content}),'%')
-		</if>
-		<if test="bean.meetingTypeId != null and bean.meetingTypeId != ''">
-			or t1.MEETING_TYPE_ID like concat(concat('%',#{bean.meetingTypeId}),'%')
-		</if>
-		<if test="bean.meetingTypeCode != null and bean.meetingTypeCode != ''">
-			or t1.MEETING_TYPE_CODE like concat(concat('%',#{bean.meetingTypeCode}),'%')
-		</if>
-		<if test="bean.meetingTypeName != null and bean.meetingTypeName != ''">
-			or t1.MEETING_TYPE_NAME like concat(concat('%',#{bean.meetingTypeName}),'%')
-		</if>
-		<if test="bean.attendeeIds != null and bean.attendeeIds != ''">
-			or t1.ATTENDEE_IDS = #{bean.attendeeIds}
-		</if>
-		<if test="bean.attendeeCodes != null and bean.attendeeCodes != ''">
-			or t1.ATTENDEE_CODES like concat(concat('%',#{bean.attendeeCodes}),'%')
-		</if>
-		<if test="bean.attendeeNames != null and bean.attendeeNames != ''">
-			or t1.ATTENDEE_NAMES like concat(concat('%',#{bean.attendeeNames}),'%')
-		</if>
-		<if test="bean.note != null and bean.note != ''">
-			or t1.NOTE like concat(concat('%',#{bean.note}),'%')
-		</if>
-		<if test="bean.attribute01 != null and bean.attribute01 != ''">
-			or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
-		</if>
-		<if test="bean.attribute02 != null and bean.attribute02 != ''">
-			or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
-		</if>
-		<if test="bean.attribute03 != null and bean.attribute03 != ''">
-			or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
-		</if>
-		<if test="bean.attribute04 != null and bean.attribute04 != ''">
-			or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
-		</if>
-		<if test="bean.attribute05 != null and bean.attribute05 != ''">
-			or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
-		</if>
-		<if test="bean.attribute06 != null and bean.attribute06 != ''">
-			or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
-		</if>
-		<if test="bean.attribute07 != null and bean.attribute07 != ''">
-			or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
-		</if>
-		<if test="bean.attribute08 != null and bean.attribute08 != ''">
-			or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
-		</if>
-		<if test="bean.attribute09Begin != null">
-			or t1.ATTRIBUTE_09 &gt;= #{bean.attribute09Begin}
-		</if>
-		<if test="bean.attribute09End != null">
-			or t1.ATTRIBUTE_09 &lt;= #{bean.attribute09End}
-		</if>
-		<if test="bean.attribute10Begin != null">
-			or t1.ATTRIBUTE_10 &gt;= #{bean.attribute10Begin}
-		</if>
-		<if test="bean.attribute10End != null">
-			or t1.ATTRIBUTE_10 &lt;= #{bean.attribute10End}
-		</if>
-		<if test="bean.createdBy != null and bean.createdBy != ''">
-			or t1.CREATED_BY = #{bean.createdBy}
-		</if>
-		<if test="bean.createdDept != null and bean.createdDept != ''">
-			or t1.CREATED_DEPT = #{bean.createdDept}
-		</if>
-		<if test="bean.creationDateBegin != null">
-			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
-		</if>
-		<if test="bean.creationDateEnd != null">
-			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
-		</if>
-		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
-			or t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
-		</if>
-		<if test="bean.lastUpdateDateBegin != null">
-			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
-		</if>
-		<if test="bean.lastUpdateDateEnd != null">
-			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
-		</if>
-		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
-			or t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
-		</if>
-		<if test="bean.version != null">
-			or t1.VERSION = #{bean.version}
-		</if>
-	</trim>
-</sql>
-<sql id="commonBpmWhereAnd">
-    <if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
-        and exists (select 1 from sys_bpm_hist_task os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId})
-    </if>
-    <if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
-        and v.businessstate_ = #{bean.bpmState}
-        <if test="bean.bpmType != 'all' and bean.bpmState == 'start'">
-            and	exists (select 1 from bpm_client_hist_procinst_v os where os.userid_ = #{bean.currUserId, jdbcType = VARCHAR} and os.dbid_ = v.dbid_)
+    </resultMap>
+    <sql id="commonColums">
+        <trim suffixOverrides=",">
+            t1.ID,
+            t1.NAME,
+            t1.AUTHOR_ID,
+            t1.AUTHOR_CODE,
+            t1.AUTHOR_NAME,
+            t1.MEETING_ROOM_ID,
+            t1.MEETING_ROOM_NAME,
+            t1.PLACE_ID,
+            t1.PLACE_NAME,
+            t1.YN_APPROVE,
+            t1.APPROVAL_IDS,
+            t1.APPROVAL_CODES,
+            t1.APPROVAL_NAMES,
+            t1.APPROVAL_STATE,
+            t1.PRE_START_TIME,
+            t1.START_TIME,
+            t1.END_TIME,
+            t1.HOST_ID,
+            t1.HOST_CODE,
+            t1.HOST_NAME,
+            t1.ORG_DEPT_ID,
+            t1.ORG_DEPT_CODE,
+            t1.ORG_DEPT_NAME,
+            t1.YN_VALID,
+            t1.YN_PUBLIC,
+            t1.YN_NEW_PLACE,
+            t1.YN_SHOW_EVENT,
+            t1.PHONE_NUMBER,
+            t1.CONTENT,
+            t1.MEETING_TYPE_ID,
+            t1.MEETING_TYPE_CODE,
+            t1.MEETING_TYPE_NAME,
+            t1.ATTENDEE_IDS,
+            t1.ATTENDEE_CODES,
+            t1.ATTENDEE_NAMES,
+            t1.EVENT_TYPE,
+            t1.REMIND_TYPE,
+            t1.REMIND_DURATION,
+            t1.BG_COLOR,
+            t1.NOTE,
+            t1.ATTRIBUTE_01,
+            t1.ATTRIBUTE_02,
+            t1.ATTRIBUTE_03,
+            t1.ATTRIBUTE_04,
+            t1.ATTRIBUTE_05,
+            t1.ATTRIBUTE_06,
+            t1.ATTRIBUTE_07,
+            t1.ATTRIBUTE_08,
+            t1.ATTRIBUTE_09,
+            t1.ATTRIBUTE_10,
+            t1.SECRET_LEVEL,
+            t1.ORG_IDENTITY,
+            t1.CREATED_BY,
+            t1.CREATED_DEPT,
+            t1.CREATION_DATE,
+            t1.LAST_UPDATED_BY,
+            t1.LAST_UPDATE_DATE,
+            t1.LAST_UPDATE_IP,
+            t1.VERSION,
+        </trim>
+    </sql>
+    <!-- 默认查询条件 -->
+    <sql id="defaultWhereAnd">
+        <if test="orgIdentity != null and orgIdentity != ''">
+            and t1.org_identity = #{orgIdentity}
         </if>
-    </if>
-</sql>
-<sql id="commonBpmColums">
-	v.dbid_,
-    v.activityalias_,
-    v.businessstate_,
-	v.assigneenames_,
-</sql>
-<sql id="commonOrderBy">
-	<choose>
-		<when test="orderBy != null and orderBy != ''">
-			order by ${orderBy}
-		</when>
-		<otherwise>
-			order by t1.creation_date desc
-		</otherwise>
-	</choose>
-</sql>
-
-<!-- 分页查询 MEETING -->
-<select id="searchMeetingByPage" parameterType="java.util.Map" resultMap="MeetingDTOMap">
-	select
-	<include refid="commonBpmColums"/>
-	<include refid="commonColums"/>
-	from MEETING t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
-	<where>
-		<if test="bean != null">
-			<choose>
-				<when test="keyWords != null and keyWords != '' ">
-					<include refid="commonWhereOr"/>
-					<include refid="commonBpmWhereAnd"/>
-				</when>
-				<otherwise>
-					<include refid="commonWhereAnd"/>
-					<include refid="commonBpmWhereAnd"/>
-				</otherwise>
-			</choose>
-		</if>
-		<include refid="defaultWhereAnd"/>
-	</where>
-	<include refid="commonOrderBy"></include>
-</select>
-<!-- 查询列表 MEETING -->
-<select id="searchMeeting" parameterType="java.util.Map" resultMap="MeetingDTOMap">
-	select
-	<include refid="commonBpmColums"/>
-	<include refid="commonColums"/>
-    from MEETING 	t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
-	<where>
-		<if test="bean != null">
-			<include refid="commonWhereAnd"/>
-			<include refid="commonBpmWhereAnd"/>
-		</if>
-		<include refid="defaultWhereAnd"/>
-	</where>
-</select>
-<!-- 按条件导出查询列表 MEETING -->
-<select id="searchMeetingForExportExcel" parameterType="java.util.Map" resultMap="MeetingDTOMap">
-	select
-		<include refid="commonBpmColums"/>
-		<include refid="commonColums"/>
-		from MEETING 	t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
-
-	<where>
-		<if test="bean != null">
-			<choose>
-				<when test="keyWords != null and keyWords != ''">
-					<include refid="commonWhereOr"/>
-					<include refid="commonBpmWhereAnd"/>
-				</when>
-				<otherwise>
-					<include refid="commonWhereAnd"/>
-					<include refid="commonBpmWhereAnd"/>
-				</otherwise>
-			</choose>
-		</if>
-		<include refid="defaultWhereAnd"/>
-	</where>
-	<include refid="commonOrderBy"/>
-</select>
-<!-- 主键查询对象 MEETING -->
-<select id="findMeetingById" parameterType="java.util.Map" resultMap="MeetingDTOMap">
-	select
-	<include refid="commonColums"/>
-	from MEETING t1
-	where t1.id = #{id}
-</select>
-<!-- 新增对象 MEETING -->
-<insert id="insertMeeting" parameterType="avicit.myportal.meeting.meeting.dto.MeetingDTO">
-	insert into MEETING
-	<trim prefix="(" suffix=")" suffixOverrides=",">
-		<if test="id != null">
-			ID,
-		</if>
-		<if test="name != null">
-			NAME,
-		</if>
-		<if test="authorId != null">
-			AUTHOR_ID,
-		</if>
-		<if test="authorCode != null">
-			AUTHOR_CODE,
-		</if>
-		<if test="authorName != null">
-			AUTHOR_NAME,
-		</if>
-		<if test="meetingRoomId != null">
-			MEETING_ROOM_ID,
-		</if>
-		<if test="meetingRoomName != null">
-			MEETING_ROOM_NAME,
-		</if>
-		<if test="ynApprove != null">
-			YN_APPROVE,
-		</if>
-		<if test="preStartTime != null">
-			PRE_START_TIME,
-		</if>
-		<if test="startTime != null">
-			START_TIME,
-		</if>
-		<if test="endTime != null">
-			END_TIME,
-		</if>
-		<if test="hostId != null">
-			HOST_ID,
-		</if>
-		<if test="hostCode != null">
-			HOST_CODE,
-		</if>
-		<if test="hostName != null">
-			HOST_NAME,
-		</if>
-		<if test="ynValid != null">
-			YN_VALID,
-		</if>
-		<if test="content != null">
-			CONTENT,
-		</if>
-		<if test="meetingTypeId != null">
-			MEETING_TYPE_ID,
-		</if>
-		<if test="meetingTypeCode != null">
-			MEETING_TYPE_CODE,
-		</if>
-		<if test="meetingTypeName != null">
-			MEETING_TYPE_NAME,
-		</if>
-		<if test="attendeeIds != null">
-			ATTENDEE_IDS,
-		</if>
-		<if test="attendeeCodes != null">
-			ATTENDEE_CODES,
-		</if>
-		<if test="attendeeNames != null">
-			ATTENDEE_NAMES,
-		</if>
-		<if test="note != null">
-			NOTE,
-		</if>
-		<if test="attribute01 != null">
-			ATTRIBUTE_01,
-		</if>
-		<if test="attribute02 != null">
-			ATTRIBUTE_02,
-		</if>
-		<if test="attribute03 != null">
-			ATTRIBUTE_03,
-		</if>
-		<if test="attribute04 != null">
-			ATTRIBUTE_04,
-		</if>
-		<if test="attribute05 != null">
-			ATTRIBUTE_05,
-		</if>
-		<if test="attribute06 != null">
-			ATTRIBUTE_06,
-		</if>
-		<if test="attribute07 != null">
-			ATTRIBUTE_07,
-		</if>
-		<if test="attribute08 != null">
-			ATTRIBUTE_08,
-		</if>
-		<if test="attribute09 != null">
-			ATTRIBUTE_09,
-		</if>
-		<if test="attribute10 != null">
-			ATTRIBUTE_10,
-		</if>
-		<if test="secretLevel != null">
-			SECRET_LEVEL,
-		</if>
-		<if test="orgIdentity != null">
-			ORG_IDENTITY,
-		</if>
-		<if test="createdBy != null">
-			CREATED_BY,
-		</if>
-		<if test="createdDept != null">
-			CREATED_DEPT,
-		</if>
-		<if test="creationDate != null">
-			CREATION_DATE,
-		</if>
-		<if test="lastUpdatedBy != null">
-			LAST_UPDATED_BY,
-		</if>
-		<if test="lastUpdateDate != null">
-			LAST_UPDATE_DATE,
-		</if>
-		<if test="lastUpdateIp != null">
-			LAST_UPDATE_IP,
-		</if>
-		<if test="version != null">
-			VERSION,
-		</if>
-	</trim>
-	<trim prefix="values (" suffix=")" suffixOverrides=",">
-		<if test="id != null">
-			#{id,jdbcType = VARCHAR},
-		</if>
-		<if test="name != null">
-			#{name,jdbcType = VARCHAR},
-		</if>
-		<if test="authorId != null">
-			#{authorId,jdbcType = VARCHAR},
-		</if>
-		<if test="authorCode != null">
-			#{authorCode,jdbcType = VARCHAR},
-		</if>
-		<if test="authorName != null">
-			#{authorName,jdbcType = VARCHAR},
-		</if>
-		<if test="meetingRoomId != null">
-			#{meetingRoomId,jdbcType = VARCHAR},
-		</if>
-		<if test="meetingRoomName != null">
-			#{meetingRoomName,jdbcType = VARCHAR},
-		</if>
-		<if test="ynApprove != null">
-			#{ynApprove,jdbcType = VARCHAR},
-		</if>
-		<if test="preStartTime != null">
-			#{preStartTime,jdbcType = TIMESTAMP},
-		</if>
-		<if test="startTime != null">
-			#{startTime,jdbcType = TIMESTAMP},
-		</if>
-		<if test="endTime != null">
-			#{endTime,jdbcType = TIMESTAMP},
-		</if>
-		<if test="hostId != null">
-			#{hostId,jdbcType = VARCHAR},
-		</if>
-		<if test="hostCode != null">
-			#{hostCode,jdbcType = VARCHAR},
-		</if>
-		<if test="hostName != null">
-			#{hostName,jdbcType = VARCHAR},
-		</if>
-		<if test="ynValid != null">
-			#{ynValid,jdbcType = VARCHAR},
-		</if>
-		<if test="content != null">
-			#{content,jdbcType = VARCHAR},
-		</if>
-		<if test="meetingTypeId != null">
-			#{meetingTypeId,jdbcType = VARCHAR},
-		</if>
-		<if test="meetingTypeCode != null">
-			#{meetingTypeCode,jdbcType = VARCHAR},
-		</if>
-		<if test="meetingTypeName != null">
-			#{meetingTypeName,jdbcType = VARCHAR},
-		</if>
-		<if test="attendeeIds != null">
-			#{attendeeIds,jdbcType = VARCHAR},
-		</if>
-		<if test="attendeeCodes != null">
-			#{attendeeCodes,jdbcType = VARCHAR},
-		</if>
-		<if test="attendeeNames != null">
-			#{attendeeNames,jdbcType = VARCHAR},
-		</if>
-		<if test="note != null">
-			#{note,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute01 != null">
-			#{attribute01,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute02 != null">
-			#{attribute02,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute03 != null">
-			#{attribute03,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute04 != null">
-			#{attribute04,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute05 != null">
-			#{attribute05,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute06 != null">
-			#{attribute06,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute07 != null">
-			#{attribute07,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute08 != null">
-			#{attribute08,jdbcType = VARCHAR},
-		</if>
-		<if test="attribute09 != null">
-			#{attribute09,jdbcType = TIMESTAMP},
-		</if>
-		<if test="attribute10 != null">
-			#{attribute10,jdbcType = TIMESTAMP},
-		</if>
-		<if test="secretLevel != null">
-			#{secretLevel,jdbcType = VARCHAR},
-		</if>
-		<if test="orgIdentity != null">
-			#{orgIdentity,jdbcType = VARCHAR},
-		</if>
-		<if test="createdBy != null">
-			#{createdBy,jdbcType = VARCHAR},
-		</if>
-		<if test="createdDept != null">
-			#{createdDept,jdbcType = VARCHAR},
-		</if>
-		<if test="creationDate != null">
-			#{creationDate,jdbcType = TIMESTAMP},
-		</if>
-		<if test="lastUpdatedBy != null">
-			#{lastUpdatedBy,jdbcType = VARCHAR},
-		</if>
-		<if test="lastUpdateDate != null">
-			#{lastUpdateDate,jdbcType = TIMESTAMP},
-		</if>
-		<if test="lastUpdateIp != null">
-			#{lastUpdateIp,jdbcType = VARCHAR},
-		</if>
-		<if test="version != null">
-			#{version,jdbcType = DECIMAL},
-		</if>
-	</trim>
-</insert>
-<!-- 批量新增对象 MEETING -->
-<insert id="insertMeetingList" parameterType="java.util.List" >
-	insert into MEETING(
-		ID ,
-		NAME ,
-		AUTHOR_ID ,
-		AUTHOR_CODE ,
-		AUTHOR_NAME ,
-		MEETING_ROOM_ID ,
-		MEETING_ROOM_NAME ,
-		YN_APPROVE ,
-		PRE_START_TIME ,
-		START_TIME ,
-		END_TIME ,
-		HOST_ID ,
-		HOST_CODE ,
-		HOST_NAME ,
-		YN_VALID ,
-		CONTENT ,
-		MEETING_TYPE_ID ,
-		MEETING_TYPE_CODE ,
-		MEETING_TYPE_NAME ,
-		ATTENDEE_IDS ,
-		ATTENDEE_CODES ,
-		ATTENDEE_NAMES ,
-		NOTE ,
-		ATTRIBUTE_01 ,
-		ATTRIBUTE_02 ,
-		ATTRIBUTE_03 ,
-		ATTRIBUTE_04 ,
-		ATTRIBUTE_05 ,
-		ATTRIBUTE_06 ,
-		ATTRIBUTE_07 ,
-		ATTRIBUTE_08 ,
-		ATTRIBUTE_09 ,
-		ATTRIBUTE_10 ,
-		SECRET_LEVEL ,
-		ORG_IDENTITY ,
-		CREATED_BY ,
-		CREATED_DEPT ,
-		CREATION_DATE ,
-		LAST_UPDATED_BY ,
-		LAST_UPDATE_DATE ,
-		LAST_UPDATE_IP ,
-		VERSION 
-	)
-	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
-		select
-			#{item.id,jdbcType = VARCHAR} ,
-			#{item.name,jdbcType = VARCHAR} ,
-			#{item.authorId,jdbcType = VARCHAR} ,
-			#{item.authorCode,jdbcType = VARCHAR} ,
-			#{item.authorName,jdbcType = VARCHAR} ,
-			#{item.meetingRoomId,jdbcType = VARCHAR} ,
-			#{item.meetingRoomName,jdbcType = VARCHAR} ,
-			#{item.ynApprove,jdbcType = VARCHAR} ,
-			#{item.preStartTime,jdbcType = TIMESTAMP} ,
-			#{item.startTime,jdbcType = TIMESTAMP} ,
-			#{item.endTime,jdbcType = TIMESTAMP} ,
-			#{item.hostId,jdbcType = VARCHAR} ,
-			#{item.hostCode,jdbcType = VARCHAR} ,
-			#{item.hostName,jdbcType = VARCHAR} ,
-			#{item.ynValid,jdbcType = VARCHAR} ,
-			#{item.content,jdbcType = VARCHAR} ,
-			#{item.meetingTypeId,jdbcType = VARCHAR} ,
-			#{item.meetingTypeCode,jdbcType = VARCHAR} ,
-			#{item.meetingTypeName,jdbcType = VARCHAR} ,
-			#{item.attendeeIds,jdbcType = VARCHAR} ,
-			#{item.attendeeCodes,jdbcType = VARCHAR} ,
-			#{item.attendeeNames,jdbcType = VARCHAR} ,
-			#{item.note,jdbcType = VARCHAR} ,
-			#{item.attribute01,jdbcType = VARCHAR} ,
-			#{item.attribute02,jdbcType = VARCHAR} ,
-			#{item.attribute03,jdbcType = VARCHAR} ,
-			#{item.attribute04,jdbcType = VARCHAR} ,
-			#{item.attribute05,jdbcType = VARCHAR} ,
-			#{item.attribute06,jdbcType = VARCHAR} ,
-			#{item.attribute07,jdbcType = VARCHAR} ,
-			#{item.attribute08,jdbcType = VARCHAR} ,
-			#{item.attribute09,jdbcType = TIMESTAMP} ,
-			#{item.attribute10,jdbcType = TIMESTAMP} ,
-			#{item.secretLevel,jdbcType = VARCHAR} ,
-			#{item.orgIdentity,jdbcType = VARCHAR} ,
-			#{item.createdBy,jdbcType = VARCHAR} ,
-			#{item.createdDept,jdbcType = VARCHAR} ,
-			#{item.creationDate,jdbcType = TIMESTAMP} ,
-			#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
-			#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
-			#{item.lastUpdateIp,jdbcType = VARCHAR} ,
-			#{item.version,jdbcType = DECIMAL} 
-		from dual
-	</foreach>
-</insert>
-<!-- 更新对象 MEETING -->
-<update id="updateMeetingSensitive" parameterType="avicit.myportal.meeting.meeting.dto.MeetingDTO">
-	update MEETING
-	<set>
-		<if test="id != null">
-			ID = #{id,jdbcType = VARCHAR} ,
-		</if>
-		<if test="name != null">
-			NAME = #{name,jdbcType = VARCHAR} ,
-		</if>
-		<if test="authorId != null">
-			AUTHOR_ID = #{authorId,jdbcType = VARCHAR} ,
-		</if>
-		<if test="authorCode != null">
-			AUTHOR_CODE = #{authorCode,jdbcType = VARCHAR} ,
-		</if>
-		<if test="authorName != null">
-			AUTHOR_NAME = #{authorName,jdbcType = VARCHAR} ,
-		</if>
-		<if test="meetingRoomId != null">
-			MEETING_ROOM_ID = #{meetingRoomId,jdbcType = VARCHAR} ,
-		</if>
-		<if test="meetingRoomName != null">
-			MEETING_ROOM_NAME = #{meetingRoomName,jdbcType = VARCHAR} ,
-		</if>
-		<if test="ynApprove != null">
-			YN_APPROVE = #{ynApprove,jdbcType = VARCHAR} ,
-		</if>
-		<if test="preStartTime != null">
-			PRE_START_TIME = #{preStartTime,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="startTime != null">
-			START_TIME = #{startTime,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="endTime != null">
-			END_TIME = #{endTime,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="hostId != null">
-			HOST_ID = #{hostId,jdbcType = VARCHAR} ,
-		</if>
-		<if test="hostCode != null">
-			HOST_CODE = #{hostCode,jdbcType = VARCHAR} ,
-		</if>
-		<if test="hostName != null">
-			HOST_NAME = #{hostName,jdbcType = VARCHAR} ,
-		</if>
-		<if test="ynValid != null">
-			YN_VALID = #{ynValid,jdbcType = VARCHAR} ,
-		</if>
-		<if test="content != null">
-			CONTENT = #{content,jdbcType = VARCHAR} ,
-		</if>
-		<if test="meetingTypeId != null">
-			MEETING_TYPE_ID = #{meetingTypeId,jdbcType = VARCHAR} ,
-		</if>
-		<if test="meetingTypeCode != null">
-			MEETING_TYPE_CODE = #{meetingTypeCode,jdbcType = VARCHAR} ,
-		</if>
-		<if test="meetingTypeName != null">
-			MEETING_TYPE_NAME = #{meetingTypeName,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attendeeIds != null">
-			ATTENDEE_IDS = #{attendeeIds,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attendeeCodes != null">
-			ATTENDEE_CODES = #{attendeeCodes,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attendeeNames != null">
-			ATTENDEE_NAMES = #{attendeeNames,jdbcType = VARCHAR} ,
-		</if>
-		<if test="note != null">
-			NOTE = #{note,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute01 != null">
-			ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute02 != null">
-			ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute03 != null">
-			ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute04 != null">
-			ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute05 != null">
-			ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute06 != null">
-			ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute07 != null">
-			ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute08 != null">
-			ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
-		</if>
-		<if test="attribute09 != null">
-			ATTRIBUTE_09 = #{attribute09,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="attribute10 != null">
-			ATTRIBUTE_10 = #{attribute10,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="secretLevel != null">
-			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
-		</if>
-		<if test="orgIdentity != null">
-			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
-		</if>
-		<if test="createdBy != null">
-			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
-		</if>
-		<if test="createdDept != null">
-			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
-		</if>
-		<if test="creationDate != null">
-			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="lastUpdatedBy != null">
-			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
-		</if>
-		<if test="lastUpdateDate != null">
-			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
-		</if>
-		<if test="lastUpdateIp != null">
-			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
-		</if>
-		<if test="version != null">
-			VERSION = version+1 
-		</if>
-	</set>
-	where id = #{id} 
-	and version = #{version}
-</update>
-<!-- 更新对象 MEETING -->
-<update id="updateMeetingAll" parameterType="avicit.myportal.meeting.meeting.dto.MeetingDTO">
-	update MEETING
-	<trim prefix="set" suffixOverrides=",">
-		ID = #{id,jdbcType = VARCHAR} ,
-		NAME = #{name,jdbcType = VARCHAR} ,
-		AUTHOR_ID = #{authorId,jdbcType = VARCHAR} ,
-		AUTHOR_CODE = #{authorCode,jdbcType = VARCHAR} ,
-		AUTHOR_NAME = #{authorName,jdbcType = VARCHAR} ,
-		MEETING_ROOM_ID = #{meetingRoomId,jdbcType = VARCHAR} ,
-		MEETING_ROOM_NAME = #{meetingRoomName,jdbcType = VARCHAR} ,
-		YN_APPROVE = #{ynApprove,jdbcType = VARCHAR} ,
-		PRE_START_TIME = #{preStartTime,jdbcType = TIMESTAMP} ,
-		START_TIME = #{startTime,jdbcType = TIMESTAMP} ,
-		END_TIME = #{endTime,jdbcType = TIMESTAMP} ,
-		HOST_ID = #{hostId,jdbcType = VARCHAR} ,
-		HOST_CODE = #{hostCode,jdbcType = VARCHAR} ,
-		HOST_NAME = #{hostName,jdbcType = VARCHAR} ,
-		YN_VALID = #{ynValid,jdbcType = VARCHAR} ,
-		CONTENT = #{content,jdbcType = VARCHAR} ,
-		MEETING_TYPE_ID = #{meetingTypeId,jdbcType = VARCHAR} ,
-		MEETING_TYPE_CODE = #{meetingTypeCode,jdbcType = VARCHAR} ,
-		MEETING_TYPE_NAME = #{meetingTypeName,jdbcType = VARCHAR} ,
-		ATTENDEE_IDS = #{attendeeIds,jdbcType = VARCHAR} ,
-		ATTENDEE_CODES = #{attendeeCodes,jdbcType = VARCHAR} ,
-		ATTENDEE_NAMES = #{attendeeNames,jdbcType = VARCHAR} ,
-		NOTE = #{note,jdbcType = VARCHAR} ,
-		ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
-		ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
-		ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
-		ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
-		ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
-		ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
-		ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
-		ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
-		ATTRIBUTE_09 = #{attribute09,jdbcType = TIMESTAMP} ,
-		ATTRIBUTE_10 = #{attribute10,jdbcType = TIMESTAMP} ,
-		SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
-		LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
-		LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
-		LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
-		VERSION = version+1 
-	</trim>
-	where id = #{id}
-	and version = #{version}
-</update>
-<!-- 批量更新对象   MEETING -->
-<update id="updateMeetingList" parameterType="java.util.List">
-	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
-	<foreach collection="dtoList" item="item" index="index"  separator="" close="">
-		update MEETING
-		set
-			ID = #{item.id,jdbcType = VARCHAR} ,
-			NAME = #{item.name,jdbcType = VARCHAR} ,
-			AUTHOR_ID = #{item.authorId,jdbcType = VARCHAR} ,
-			AUTHOR_CODE = #{item.authorCode,jdbcType = VARCHAR} ,
-			AUTHOR_NAME = #{item.authorName,jdbcType = VARCHAR} ,
-			MEETING_ROOM_ID = #{item.meetingRoomId,jdbcType = VARCHAR} ,
-			MEETING_ROOM_NAME = #{item.meetingRoomName,jdbcType = VARCHAR} ,
-			YN_APPROVE = #{item.ynApprove,jdbcType = VARCHAR} ,
-			PRE_START_TIME = #{item.preStartTime,jdbcType = TIMESTAMP} ,
-			START_TIME = #{item.startTime,jdbcType = TIMESTAMP} ,
-			END_TIME = #{item.endTime,jdbcType = TIMESTAMP} ,
-			HOST_ID = #{item.hostId,jdbcType = VARCHAR} ,
-			HOST_CODE = #{item.hostCode,jdbcType = VARCHAR} ,
-			HOST_NAME = #{item.hostName,jdbcType = VARCHAR} ,
-			YN_VALID = #{item.ynValid,jdbcType = VARCHAR} ,
-			CONTENT = #{item.content,jdbcType = VARCHAR} ,
-			MEETING_TYPE_ID = #{item.meetingTypeId,jdbcType = VARCHAR} ,
-			MEETING_TYPE_CODE = #{item.meetingTypeCode,jdbcType = VARCHAR} ,
-			MEETING_TYPE_NAME = #{item.meetingTypeName,jdbcType = VARCHAR} ,
-			ATTENDEE_IDS = #{item.attendeeIds,jdbcType = VARCHAR} ,
-			ATTENDEE_CODES = #{item.attendeeCodes,jdbcType = VARCHAR} ,
-			ATTENDEE_NAMES = #{item.attendeeNames,jdbcType = VARCHAR} ,
-			NOTE = #{item.note,jdbcType = VARCHAR} ,
-			ATTRIBUTE_01 = #{item.attribute01,jdbcType = VARCHAR} ,
-			ATTRIBUTE_02 = #{item.attribute02,jdbcType = VARCHAR} ,
-			ATTRIBUTE_03 = #{item.attribute03,jdbcType = VARCHAR} ,
-			ATTRIBUTE_04 = #{item.attribute04,jdbcType = VARCHAR} ,
-			ATTRIBUTE_05 = #{item.attribute05,jdbcType = VARCHAR} ,
-			ATTRIBUTE_06 = #{item.attribute06,jdbcType = VARCHAR} ,
-			ATTRIBUTE_07 = #{item.attribute07,jdbcType = VARCHAR} ,
-			ATTRIBUTE_08 = #{item.attribute08,jdbcType = VARCHAR} ,
-			ATTRIBUTE_09 = #{item.attribute09,jdbcType = TIMESTAMP} ,
-			ATTRIBUTE_10 = #{item.attribute10,jdbcType = TIMESTAMP} ,
-			SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} ,
-			ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
-			CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
-			CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
-			CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
-			LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
-			LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
-			LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
-			VERSION = version+1  
-		where id = #{item.id}
-		and version = #{item.version};
-	</foreach>
-	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
-</update>
-<!-- 主键删除 MEETING -->
-<delete id="deleteMeetingById" parameterType="java.lang.String">
-	delete from MEETING  where id = #{id}
-</delete>
+        <if test="wordSecret != null and wordSecret.size()>0">
+            and t1.secret_level in
+            <foreach collection="wordSecret" item="item" index="key" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+    </sql>
+    <sql id="commonWhereAnd">
+        <if test="bean.id != null and bean.id != ''">
+            and t1.ID = #{bean.id}
+        </if>
+        <if test="bean.name != null and bean.name != ''">
+            and t1.NAME like concat(concat('%',#{bean.name}),'%')
+        </if>
+        <if test="bean.authorId != null and bean.authorId != ''">
+            and t1.AUTHOR_ID = #{bean.authorId}
+        </if>
+        <if test="bean.authorCode != null and bean.authorCode != ''">
+            and t1.AUTHOR_CODE like concat(concat('%',#{bean.authorCode}),'%')
+        </if>
+        <if test="bean.authorName != null and bean.authorName != ''">
+            and t1.AUTHOR_NAME like concat(concat('%',#{bean.authorName}),'%')
+        </if>
+        <if test="bean.meetingRoomName != null and bean.meetingRoomName != ''">
+            and t1.MEETING_ROOM_NAME like concat(concat('%',#{bean.meetingRoomName}),'%')
+        </if>
+        <if test="bean.placeId != null and bean.placeId != ''">
+            and t1.PLACE_ID like concat(concat('%',#{bean.placeId}),'%')
+        </if>
+        <if test="bean.placeName != null and bean.placeName != ''">
+            and t1.PLACE_NAME like concat(concat('%',#{bean.placeName}),'%')
+        </if>
+        <if test="bean.ynApprove != null and bean.ynApprove != ''">
+            and t1.YN_APPROVE = #{bean.ynApprove}
+        </if>
+        <if test="bean.approvalIds != null and bean.approvalIds != ''">
+            and t1.APPROVAL_IDS = #{bean.approvalIds}
+        </if>
+        <if test="bean.approvalCodes != null and bean.approvalCodes != ''">
+            and t1.APPROVAL_CODES like concat(concat('%',#{bean.approvalCodes}),'%')
+        </if>
+        <if test="bean.approvalNames != null and bean.approvalNames != ''">
+            and t1.APPROVAL_NAMES like concat(concat('%',#{bean.approvalNames}),'%')
+        </if>
+        <if test="bean.approvalState != null and bean.approvalState != ''">
+            and t1.APPROVAL_STATE like concat(concat('%',#{bean.approvalState}),'%')
+        </if>
+        <if test="bean.preStartTimeBegin != null">
+            and t1.PRE_START_TIME &gt;= #{bean.preStartTimeBegin}
+        </if>
+        <if test="bean.preStartTimeEnd != null">
+            and t1.PRE_START_TIME &lt;= #{bean.preStartTimeEnd}
+        </if>
+        <if test="bean.startTimeBegin != null">
+            and t1.START_TIME &gt;= #{bean.startTimeBegin}
+        </if>
+        <if test="bean.startTimeEnd != null">
+            and t1.START_TIME &lt;= #{bean.startTimeEnd}
+        </if>
+        <if test="bean.endTimeBegin != null">
+            and t1.END_TIME &gt;= #{bean.endTimeBegin}
+        </if>
+        <if test="bean.endTimeEnd != null">
+            and t1.END_TIME &lt;= #{bean.endTimeEnd}
+        </if>
+        <if test="bean.hostId != null and bean.hostId != ''">
+            and t1.HOST_ID = #{bean.hostId}
+        </if>
+        <if test="bean.hostCode != null and bean.hostCode != ''">
+            and t1.HOST_CODE like concat(concat('%',#{bean.hostCode}),'%')
+        </if>
+        <if test="bean.hostName != null and bean.hostName != ''">
+            and t1.HOST_NAME like concat(concat('%',#{bean.hostName}),'%')
+        </if>
+        <if test="bean.orgDeptId != null and bean.orgDeptId != ''">
+            and t1.ORG_DEPT_ID = #{bean.orgDeptId}
+        </if>
+        <if test="bean.orgDeptCode != null and bean.orgDeptCode != ''">
+            and t1.ORG_DEPT_CODE like concat(concat('%',#{bean.orgDeptCode}),'%')
+        </if>
+        <if test="bean.orgDeptName != null and bean.orgDeptName != ''">
+            and t1.ORG_DEPT_NAME like concat(concat('%',#{bean.orgDeptName}),'%')
+        </if>
+        <if test="bean.ynValid != null and bean.ynValid != ''">
+            and t1.YN_VALID = #{bean.ynValid}
+        </if>
+        <if test="bean.ynPublic != null and bean.ynPublic != ''">
+            and t1.YN_PUBLIC = #{bean.ynPublic}
+        </if>
+        <if test="bean.ynNewPlace != null and bean.ynNewPlace != ''">
+            and t1.YN_NEW_PLACE = #{bean.ynNewPlace}
+        </if>
+        <if test="bean.ynShowEvent != null and bean.ynShowEvent != ''">
+            and t1.YN_SHOW_EVENT = #{bean.ynShowEvent}
+        </if>
+        <if test="bean.phoneNumber != null and bean.phoneNumber != ''">
+            and t1.PHONE_NUMBER like concat(concat('%',#{bean.phoneNumber}),'%')
+        </if>
+        <if test="bean.content != null and bean.content != ''">
+            and t1.CONTENT like concat(concat('%',#{bean.content}),'%')
+        </if>
+        <if test="bean.meetingTypeId != null and bean.meetingTypeId != ''">
+            and t1.MEETING_TYPE_ID like concat(concat('%',#{bean.meetingTypeId}),'%')
+        </if>
+        <if test="bean.meetingTypeCode != null and bean.meetingTypeCode != ''">
+            and t1.MEETING_TYPE_CODE like concat(concat('%',#{bean.meetingTypeCode}),'%')
+        </if>
+        <if test="bean.meetingTypeName != null and bean.meetingTypeName != ''">
+            and t1.MEETING_TYPE_NAME like concat(concat('%',#{bean.meetingTypeName}),'%')
+        </if>
+        <if test="bean.attendeeIds != null and bean.attendeeIds != ''">
+            and t1.ATTENDEE_IDS = #{bean.attendeeIds}
+        </if>
+        <if test="bean.attendeeCodes != null and bean.attendeeCodes != ''">
+            and t1.ATTENDEE_CODES like concat(concat('%',#{bean.attendeeCodes}),'%')
+        </if>
+        <if test="bean.attendeeNames != null and bean.attendeeNames != ''">
+            and t1.ATTENDEE_NAMES like concat(concat('%',#{bean.attendeeNames}),'%')
+        </if>
+        <if test="bean.eventType != null and bean.eventType != ''">
+            and t1.EVENT_TYPE = #{bean.eventType}
+        </if>
+        <if test="bean.remindType != null and bean.remindType != ''">
+            and t1.REMIND_TYPE = #{bean.remindType}
+        </if>
+        <if test="bean.remindDuration != null">
+            and t1.REMIND_DURATION = #{bean.remindDuration}
+        </if>
+        <if test="bean.bgColor != null and bean.bgColor != ''">
+            and t1.BG_COLOR like concat(concat('%',#{bean.bgColor}),'%')
+        </if>
+        <if test="bean.note != null and bean.note != ''">
+            and t1.NOTE like concat(concat('%',#{bean.note}),'%')
+        </if>
+        <if test="bean.attribute01 != null and bean.attribute01 != ''">
+            and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+        </if>
+        <if test="bean.attribute02 != null and bean.attribute02 != ''">
+            and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+        </if>
+        <if test="bean.attribute03 != null and bean.attribute03 != ''">
+            and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+        </if>
+        <if test="bean.attribute04 != null and bean.attribute04 != ''">
+            and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+        </if>
+        <if test="bean.attribute05 != null and bean.attribute05 != ''">
+            and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+        </if>
+        <if test="bean.attribute06 != null and bean.attribute06 != ''">
+            and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+        </if>
+        <if test="bean.attribute07 != null and bean.attribute07 != ''">
+            and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+        </if>
+        <if test="bean.attribute08 != null and bean.attribute08 != ''">
+            and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+        </if>
+        <if test="bean.attribute09Begin != null">
+            and t1.ATTRIBUTE_09 &gt;= #{bean.attribute09Begin}
+        </if>
+        <if test="bean.attribute09End != null">
+            and t1.ATTRIBUTE_09 &lt;= #{bean.attribute09End}
+        </if>
+        <if test="bean.attribute10Begin != null">
+            and t1.ATTRIBUTE_10 &gt;= #{bean.attribute10Begin}
+        </if>
+        <if test="bean.attribute10End != null">
+            and t1.ATTRIBUTE_10 &lt;= #{bean.attribute10End}
+        </if>
+        <if test="bean.secretLevel != null and bean.secretLevel != ''">
+            and t1.SECRET_LEVEL = #{bean.secretLevel}
+        </if>
+        <if test="bean.createdBy != null and bean.createdBy != ''">
+            and t1.CREATED_BY = #{bean.createdBy}
+        </if>
+        <if test="bean.createdDept != null and bean.createdDept != ''">
+            and t1.CREATED_DEPT = #{bean.createdDept}
+        </if>
+        <if test="bean.creationDateBegin != null">
+            and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+        </if>
+        <if test="bean.creationDateEnd != null">
+            and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+        </if>
+        <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+            and t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+        </if>
+        <if test="bean.lastUpdateDateBegin != null">
+            and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+        </if>
+        <if test="bean.lastUpdateDateEnd != null">
+            and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+        </if>
+        <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+            and t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+        </if>
+        <if test="bean.version != null">
+            and t1.VERSION = #{bean.version}
+        </if>
+    </sql>
+    <sql id="commonWhereOr">
+        <trim prefix="(" suffix=")" prefixOverrides="or">
+            <if test="bean.id != null and bean.id != ''">
+                or t1.ID = #{bean.id}
+            </if>
+            <if test="bean.name != null and bean.name != ''">
+                or t1.NAME like concat(concat('%',#{bean.name}),'%')
+            </if>
+            <if test="bean.authorId != null and bean.authorId != ''">
+                or t1.AUTHOR_ID = #{bean.authorId}
+            </if>
+            <if test="bean.authorCode != null and bean.authorCode != ''">
+                or t1.AUTHOR_CODE like concat(concat('%',#{bean.authorCode}),'%')
+            </if>
+            <if test="bean.authorName != null and bean.authorName != ''">
+                or t1.AUTHOR_NAME like concat(concat('%',#{bean.authorName}),'%')
+            </if>
+            <if test="bean.meetingRoomName != null and bean.meetingRoomName != ''">
+                or t1.MEETING_ROOM_NAME like concat(concat('%',#{bean.meetingRoomName}),'%')
+            </if>
+            <if test="bean.placeId != null and bean.placeId != ''">
+                or t1.PLACE_ID like concat(concat('%',#{bean.placeId}),'%')
+            </if>
+            <if test="bean.placeName != null and bean.placeName != ''">
+                or t1.PLACE_NAME like concat(concat('%',#{bean.placeName}),'%')
+            </if>
+            <if test="bean.ynApprove != null and bean.ynApprove != ''">
+                or t1.YN_APPROVE = #{bean.ynApprove}
+            </if>
+            <if test="bean.approvalIds != null and bean.approvalIds != ''">
+                or t1.APPROVAL_IDS = #{bean.approvalIds}
+            </if>
+            <if test="bean.approvalCodes != null and bean.approvalCodes != ''">
+                or t1.APPROVAL_CODES like concat(concat('%',#{bean.approvalCodes}),'%')
+            </if>
+            <if test="bean.approvalNames != null and bean.approvalNames != ''">
+                or t1.APPROVAL_NAMES like concat(concat('%',#{bean.approvalNames}),'%')
+            </if>
+            <if test="bean.approvalState != null and bean.approvalState != ''">
+                or t1.APPROVAL_STATE like concat(concat('%',#{bean.approvalState}),'%')
+            </if>
+            <if test="bean.preStartTimeBegin != null">
+                or t1.PRE_START_TIME &gt;= #{bean.preStartTimeBegin}
+            </if>
+            <if test="bean.preStartTimeEnd != null">
+                or t1.PRE_START_TIME &lt;= #{bean.preStartTimeEnd}
+            </if>
+            <if test="bean.startTimeBegin != null">
+                or t1.START_TIME &gt;= #{bean.startTimeBegin}
+            </if>
+            <if test="bean.startTimeEnd != null">
+                or t1.START_TIME &lt;= #{bean.startTimeEnd}
+            </if>
+            <if test="bean.endTimeBegin != null">
+                or t1.END_TIME &gt;= #{bean.endTimeBegin}
+            </if>
+            <if test="bean.endTimeEnd != null">
+                or t1.END_TIME &lt;= #{bean.endTimeEnd}
+            </if>
+            <if test="bean.hostId != null and bean.hostId != ''">
+                or t1.HOST_ID = #{bean.hostId}
+            </if>
+            <if test="bean.hostCode != null and bean.hostCode != ''">
+                or t1.HOST_CODE like concat(concat('%',#{bean.hostCode}),'%')
+            </if>
+            <if test="bean.hostName != null and bean.hostName != ''">
+                or t1.HOST_NAME like concat(concat('%',#{bean.hostName}),'%')
+            </if>
+            <if test="bean.orgDeptId != null and bean.orgDeptId != ''">
+                or t1.ORG_DEPT_ID = #{bean.orgDeptId}
+            </if>
+            <if test="bean.orgDeptCode != null and bean.orgDeptCode != ''">
+                or t1.ORG_DEPT_CODE like concat(concat('%',#{bean.orgDeptCode}),'%')
+            </if>
+            <if test="bean.orgDeptName != null and bean.orgDeptName != ''">
+                or t1.ORG_DEPT_NAME like concat(concat('%',#{bean.orgDeptName}),'%')
+            </if>
+            <if test="bean.ynValid != null and bean.ynValid != ''">
+                or t1.YN_VALID = #{bean.ynValid}
+            </if>
+            <if test="bean.ynPublic != null and bean.ynPublic != ''">
+                or t1.YN_PUBLIC = #{bean.ynPublic}
+            </if>
+            <if test="bean.ynNewPlace != null and bean.ynNewPlace != ''">
+                or t1.YN_NEW_PLACE = #{bean.ynNewPlace}
+            </if>
+            <if test="bean.ynShowEvent != null and bean.ynShowEvent != ''">
+                or t1.YN_SHOW_EVENT = #{bean.ynShowEvent}
+            </if>
+            <if test="bean.phoneNumber != null and bean.phoneNumber != ''">
+                or t1.PHONE_NUMBER like concat(concat('%',#{bean.phoneNumber}),'%')
+            </if>
+            <if test="bean.content != null and bean.content != ''">
+                or t1.CONTENT like concat(concat('%',#{bean.content}),'%')
+            </if>
+            <if test="bean.meetingTypeId != null and bean.meetingTypeId != ''">
+                or t1.MEETING_TYPE_ID like concat(concat('%',#{bean.meetingTypeId}),'%')
+            </if>
+            <if test="bean.meetingTypeCode != null and bean.meetingTypeCode != ''">
+                or t1.MEETING_TYPE_CODE like concat(concat('%',#{bean.meetingTypeCode}),'%')
+            </if>
+            <if test="bean.meetingTypeName != null and bean.meetingTypeName != ''">
+                or t1.MEETING_TYPE_NAME like concat(concat('%',#{bean.meetingTypeName}),'%')
+            </if>
+            <if test="bean.attendeeIds != null and bean.attendeeIds != ''">
+                or t1.ATTENDEE_IDS = #{bean.attendeeIds}
+            </if>
+            <if test="bean.attendeeCodes != null and bean.attendeeCodes != ''">
+                or t1.ATTENDEE_CODES like concat(concat('%',#{bean.attendeeCodes}),'%')
+            </if>
+            <if test="bean.attendeeNames != null and bean.attendeeNames != ''">
+                or t1.ATTENDEE_NAMES like concat(concat('%',#{bean.attendeeNames}),'%')
+            </if>
+            <if test="bean.eventType != null and bean.eventType != ''">
+                or t1.EVENT_TYPE = #{bean.eventType}
+            </if>
+            <if test="bean.remindType != null and bean.remindType != ''">
+                or t1.REMIND_TYPE = #{bean.remindType}
+            </if>
+            <if test="bean.remindDuration != null">
+                or t1.REMIND_DURATION = #{bean.remindDuration}
+            </if>
+            <if test="bean.bgColor != null and bean.bgColor != ''">
+                or t1.BG_COLOR like concat(concat('%',#{bean.bgColor}),'%')
+            </if>
+            <if test="bean.note != null and bean.note != ''">
+                or t1.NOTE like concat(concat('%',#{bean.note}),'%')
+            </if>
+            <if test="bean.attribute01 != null and bean.attribute01 != ''">
+                or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+            </if>
+            <if test="bean.attribute02 != null and bean.attribute02 != ''">
+                or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+            </if>
+            <if test="bean.attribute03 != null and bean.attribute03 != ''">
+                or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+            </if>
+            <if test="bean.attribute04 != null and bean.attribute04 != ''">
+                or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+            </if>
+            <if test="bean.attribute05 != null and bean.attribute05 != ''">
+                or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+            </if>
+            <if test="bean.attribute06 != null and bean.attribute06 != ''">
+                or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+            </if>
+            <if test="bean.attribute07 != null and bean.attribute07 != ''">
+                or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+            </if>
+            <if test="bean.attribute08 != null and bean.attribute08 != ''">
+                or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+            </if>
+            <if test="bean.attribute09Begin != null">
+                or t1.ATTRIBUTE_09 &gt;= #{bean.attribute09Begin}
+            </if>
+            <if test="bean.attribute09End != null">
+                or t1.ATTRIBUTE_09 &lt;= #{bean.attribute09End}
+            </if>
+            <if test="bean.attribute10Begin != null">
+                or t1.ATTRIBUTE_10 &gt;= #{bean.attribute10Begin}
+            </if>
+            <if test="bean.attribute10End != null">
+                or t1.ATTRIBUTE_10 &lt;= #{bean.attribute10End}
+            </if>
+            <if test="bean.createdBy != null and bean.createdBy != ''">
+                or t1.CREATED_BY = #{bean.createdBy}
+            </if>
+            <if test="bean.createdDept != null and bean.createdDept != ''">
+                or t1.CREATED_DEPT = #{bean.createdDept}
+            </if>
+            <if test="bean.creationDateBegin != null">
+                or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+            </if>
+            <if test="bean.creationDateEnd != null">
+                or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+            </if>
+            <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+                or t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+            </if>
+            <if test="bean.lastUpdateDateBegin != null">
+                or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+            </if>
+            <if test="bean.lastUpdateDateEnd != null">
+                or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+            </if>
+            <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+                or t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+            </if>
+            <if test="bean.version != null">
+                or t1.VERSION = #{bean.version}
+            </if>
+        </trim>
+    </sql>
+    <sql id="commonBpmWhereAnd">
+        <if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+            and exists (select 1 from sys_bpm_hist_task os where (os.task_b_id_ = t1.id and os.assignee_ =
+            #{bean.currUserId}) or (v.businessstate_ is null and t1.CREATED_BY=#{bean.currUserId})
+            or exists (select 1 from MEETING_USER t2 where t1.ID = t2.MEETING_ID and t2.USER_ID = #{bean.currUserId} and
+            t1.CREATED_BY != t2.USER_ID and (v.ACTIVITYALIAS_ != '拟稿' or v.ACTIVITYALIAS_ is NULL)))
+        </if>
+        <if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+            and v.businessstate_ = #{bean.bpmState}
+            <if test="bean.bpmType != 'all' and bean.bpmState == 'start'">
+                and exists (select 1 from bpm_client_hist_procinst_v os where os.userid_ =
+                #{bean.currUserId, jdbcType = VARCHAR} and os.dbid_ = v.dbid_)
+            </if>
+        </if>
+    </sql>
+    <sql id="commonBpmColums">
+        v.dbid_,
+        v.activityalias_,
+        v.businessstate_,
+	    v.assigneenames_,
+    </sql>
+    <sql id="commonOrderBy">
+        <choose>
+            <when test="orderBy != null and orderBy != ''">
+                order by ${orderBy}
+            </when>
+            <otherwise>
+                order by t1.creation_date desc
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- 分页查询 MEETING -->
+    <select id="searchMeetingByPage" parameterType="java.util.Map" resultMap="MeetingDTOMap">
+        select
+        <include refid="commonBpmColums"/>
+        <include refid="commonColums"/>
+        from MEETING t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+        <where>
+            <if test="bean != null">
+                <choose>
+                    <when test="keyWords != null and keyWords != '' ">
+                        <include refid="commonWhereOr"/>
+                        <include refid="commonBpmWhereAnd"/>
+                    </when>
+                    <otherwise>
+                        <include refid="commonWhereAnd"/>
+                        <include refid="commonBpmWhereAnd"/>
+                    </otherwise>
+                </choose>
+            </if>
+            <include refid="defaultWhereAnd"/>
+        </where>
+        <include refid="commonOrderBy"/>
+    </select>
+    <!-- 查询列表 MEETING -->
+    <select id="searchMeeting" parameterType="java.util.Map" resultMap="MeetingDTOMap">
+        SELECT
+        <include refid="commonBpmColums"/>
+        <include refid="commonColums"/>
+        FROM MEETING t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+        <where>
+            <if test="bean != null">
+                <include refid="commonWhereAnd"/>
+                <include refid="commonBpmWhereAnd"/>
+            </if>
+            <include refid="defaultWhereAnd"/>
+        </where>
+    </select>
+    <!-- 根据用户 ID 查询会议信息 -->
+    <select id="searchMeetingsByUserId" parameterType="java.util.Map" resultMap="MeetingDTOMap">
+        SELECT
+        <include refid="commonColums"/>
+        FROM MEETING t1 left join MEETING_USER t2 ON t1.ID = t2.MEETING_ID
+        <where>
+            <if test="bean != null">
+                <choose>
+                    <when test="keyWords != null and keyWords != '' ">
+                        <include refid="commonWhereOr"/>
+                    </when>
+                    <otherwise>
+                        <include refid="commonWhereAnd"/>
+                    </otherwise>
+                </choose>
+            </if>
+            <include refid="defaultWhereAnd"/>
+            and t2.USER_ID = #{bean.currUserId}
+        </where>
+        <include refid="commonOrderBy"/>
+    </select>
+    <!-- 按条件导出查询列表 MEETING -->
+    <select id="searchMeetingForExportExcel" parameterType="java.util.Map" resultMap="MeetingDTOMap">
+        select
+        <include refid="commonBpmColums"/>
+        <include refid="commonColums"/>
+        from MEETING t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+        <where>
+            <if test="bean != null">
+                <choose>
+                    <when test="keyWords != null and keyWords != ''">
+                        <include refid="commonWhereOr"/>
+                        <include refid="commonBpmWhereAnd"/>
+                    </when>
+                    <otherwise>
+                        <include refid="commonWhereAnd"/>
+                        <include refid="commonBpmWhereAnd"/>
+                    </otherwise>
+                </choose>
+            </if>
+            <include refid="defaultWhereAnd"/>
+        </where>
+        <include refid="commonOrderBy"/>
+    </select>
+    <!-- 主键查询对象 MEETING -->
+    <select id="findMeetingById" parameterType="java.util.Map" resultMap="MeetingDTOMap">
+        select
+        <include refid="commonColums"/>
+        from MEETING t1
+        where t1.id = #{id}
+    </select>
+    <!-- 新增对象 MEETING -->
+    <insert id="insertMeeting" parameterType="avicit.myportal.meeting.meeting.dto.MeetingDTO">
+        insert into MEETING
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="authorId != null">
+                AUTHOR_ID,
+            </if>
+            <if test="authorCode != null">
+                AUTHOR_CODE,
+            </if>
+            <if test="authorName != null">
+                AUTHOR_NAME,
+            </if>
+            <if test="meetingRoomId != null">
+                MEETING_ROOM_ID,
+            </if>
+            <if test="meetingRoomName != null">
+                MEETING_ROOM_NAME,
+            </if>
+            <if test="placeId != null">
+                PLACE_ID,
+            </if>
+            <if test="placeName != null">
+                PLACE_NAME,
+            </if>
+            <if test="ynApprove != null">
+                YN_APPROVE,
+            </if>
+            <if test="approvalIds != null">
+                APPROVAL_IDS,
+            </if>
+            <if test="approvalCodes != null">
+                APPROVAL_CODES,
+            </if>
+            <if test="approvalNames != null">
+                APPROVAL_NAMES,
+            </if>
+            <if test="approvalState != null">
+                APPROVAL_STATE,
+            </if>
+            <if test="preStartTime != null">
+                PRE_START_TIME,
+            </if>
+            <if test="startTime != null">
+                START_TIME,
+            </if>
+            <if test="endTime != null">
+                END_TIME,
+            </if>
+            <if test="hostId != null">
+                HOST_ID,
+            </if>
+            <if test="hostCode != null">
+                HOST_CODE,
+            </if>
+            <if test="hostName != null">
+                HOST_NAME,
+            </if>
+            <if test="orgDeptId != null">
+                ORG_DEPT_ID,
+            </if>
+            <if test="orgDeptCode != null">
+                ORG_DEPT_CODE,
+            </if>
+            <if test="orgDeptName != null">
+                ORG_DEPT_NAME,
+            </if>
+            <if test="ynValid != null">
+                YN_VALID,
+            </if>
+            <if test="ynPublic != null">
+                YN_PUBLIC,
+            </if>
+            <if test="ynNewPlace != null">
+                YN_NEW_PLACE,
+            </if>
+            <if test="ynShowEvent != null">
+                YN_SHOW_EVENT,
+            </if>
+            <if test="phoneNumber != null">
+                PHONE_NUMBER,
+            </if>
+            <if test="content != null">
+                CONTENT,
+            </if>
+            <if test="meetingTypeId != null">
+                MEETING_TYPE_ID,
+            </if>
+            <if test="meetingTypeCode != null">
+                MEETING_TYPE_CODE,
+            </if>
+            <if test="meetingTypeName != null">
+                MEETING_TYPE_NAME,
+            </if>
+            <if test="attendeeIds != null">
+                ATTENDEE_IDS,
+            </if>
+            <if test="attendeeCodes != null">
+                ATTENDEE_CODES,
+            </if>
+            <if test="attendeeNames != null">
+                ATTENDEE_NAMES,
+            </if>
+            <if test="eventType != null">
+                EVENT_TYPE,
+            </if>
+            <if test="remindType != null">
+                REMIND_TYPE,
+            </if>
+            <if test="remindDuration != null">
+                REMIND_DURATION,
+            </if>
+            <if test="bgColor != null">
+                BG_COLOR,
+            </if>
+            <if test="note != null">
+                NOTE,
+            </if>
+            <if test="attribute01 != null">
+                ATTRIBUTE_01,
+            </if>
+            <if test="attribute02 != null">
+                ATTRIBUTE_02,
+            </if>
+            <if test="attribute03 != null">
+                ATTRIBUTE_03,
+            </if>
+            <if test="attribute04 != null">
+                ATTRIBUTE_04,
+            </if>
+            <if test="attribute05 != null">
+                ATTRIBUTE_05,
+            </if>
+            <if test="attribute06 != null">
+                ATTRIBUTE_06,
+            </if>
+            <if test="attribute07 != null">
+                ATTRIBUTE_07,
+            </if>
+            <if test="attribute08 != null">
+                ATTRIBUTE_08,
+            </if>
+            <if test="attribute09 != null">
+                ATTRIBUTE_09,
+            </if>
+            <if test="attribute10 != null">
+                ATTRIBUTE_10,
+            </if>
+            <if test="secretLevel != null">
+                SECRET_LEVEL,
+            </if>
+            <if test="orgIdentity != null">
+                ORG_IDENTITY,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY,
+            </if>
+            <if test="createdDept != null">
+                CREATED_DEPT,
+            </if>
+            <if test="creationDate != null">
+                CREATION_DATE,
+            </if>
+            <if test="lastUpdatedBy != null">
+                LAST_UPDATED_BY,
+            </if>
+            <if test="lastUpdateDate != null">
+                LAST_UPDATE_DATE,
+            </if>
+            <if test="lastUpdateIp != null">
+                LAST_UPDATE_IP,
+            </if>
+            <if test="version != null">
+                VERSION,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType = VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType = VARCHAR},
+            </if>
+            <if test="authorId != null">
+                #{authorId,jdbcType = VARCHAR},
+            </if>
+            <if test="authorCode != null">
+                #{authorCode,jdbcType = VARCHAR},
+            </if>
+            <if test="authorName != null">
+                #{authorName,jdbcType = VARCHAR},
+            </if>
+            <if test="meetingRoomId != null">
+                #{meetingRoomId,jdbcType = VARCHAR},
+            </if>
+            <if test="meetingRoomName != null">
+                #{meetingRoomName,jdbcType = VARCHAR},
+            </if>
+            <if test="placeId != null">
+                #{placeId,jdbcType = VARCHAR},
+            </if>
+            <if test="placeName != null">
+                #{placeName,jdbcType = VARCHAR},
+            </if>
+            <if test="ynApprove != null">
+                #{ynApprove,jdbcType = VARCHAR},
+            </if>
+            <if test="approvalIds != null">
+                #{approvalIds,jdbcType = VARCHAR},
+            </if>
+            <if test="approvalCodes != null">
+                #{approvalCodes,jdbcType = VARCHAR},
+            </if>
+            <if test="approvalNames != null">
+                #{approvalNames,jdbcType = VARCHAR},
+            </if>
+            <if test="approvalState != null">
+                #{approvalState,jdbcType = VARCHAR},
+            </if>
+            <if test="preStartTime != null">
+                #{preStartTime,jdbcType = TIMESTAMP},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType = TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType = TIMESTAMP},
+            </if>
+            <if test="hostId != null">
+                #{hostId,jdbcType = VARCHAR},
+            </if>
+            <if test="hostCode != null">
+                #{hostCode,jdbcType = VARCHAR},
+            </if>
+            <if test="hostName != null">
+                #{hostName,jdbcType = VARCHAR},
+            </if>
+            <if test="orgDeptId != null">
+                #{orgDeptId,jdbcType = VARCHAR},
+            </if>
+            <if test="orgDeptCode != null">
+                #{orgDeptCode,jdbcType = VARCHAR},
+            </if>
+            <if test="orgDeptName != null">
+                #{orgDeptName,jdbcType = VARCHAR},
+            </if>
+            <if test="ynValid != null">
+                #{ynValid,jdbcType = VARCHAR},
+            </if>
+            <if test="ynPublic != null">
+                #{ynPublic,jdbcType = VARCHAR},
+            </if>
+            <if test="ynNewPlace != null">
+                #{ynNewPlace,jdbcType = VARCHAR},
+            </if>
+            <if test="ynShowEvent != null">
+                #{ynShowEvent,jdbcType = VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                #{phoneNumber,jdbcType = VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType = VARCHAR},
+            </if>
+            <if test="meetingTypeId != null">
+                #{meetingTypeId,jdbcType = VARCHAR},
+            </if>
+            <if test="meetingTypeCode != null">
+                #{meetingTypeCode,jdbcType = VARCHAR},
+            </if>
+            <if test="meetingTypeName != null">
+                #{meetingTypeName,jdbcType = VARCHAR},
+            </if>
+            <if test="attendeeIds != null">
+                #{attendeeIds,jdbcType = VARCHAR},
+            </if>
+            <if test="attendeeCodes != null">
+                #{attendeeCodes,jdbcType = VARCHAR},
+            </if>
+            <if test="attendeeNames != null">
+                #{attendeeNames,jdbcType = VARCHAR},
+            </if>
+            <if test="eventType != null">
+                #{eventType,jdbcType = VARCHAR},
+            </if>
+            <if test="remindType != null">
+                #{remindType,jdbcType = VARCHAR},
+            </if>
+            <if test="remindDuration != null">
+                #{remindDuration,jdbcType = DECIMAL},
+            </if>
+            <if test="bgColor != null">
+                #{bgColor,jdbcType = VARCHAR},
+            </if>
+            <if test="note != null">
+                #{note,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute01 != null">
+                #{attribute01,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute02 != null">
+                #{attribute02,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute03 != null">
+                #{attribute03,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute04 != null">
+                #{attribute04,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute05 != null">
+                #{attribute05,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute06 != null">
+                #{attribute06,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute07 != null">
+                #{attribute07,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute08 != null">
+                #{attribute08,jdbcType = VARCHAR},
+            </if>
+            <if test="attribute09 != null">
+                #{attribute09,jdbcType = TIMESTAMP},
+            </if>
+            <if test="attribute10 != null">
+                #{attribute10,jdbcType = TIMESTAMP},
+            </if>
+            <if test="secretLevel != null">
+                #{secretLevel,jdbcType = VARCHAR},
+            </if>
+            <if test="orgIdentity != null">
+                #{orgIdentity,jdbcType = VARCHAR},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType = VARCHAR},
+            </if>
+            <if test="createdDept != null">
+                #{createdDept,jdbcType = VARCHAR},
+            </if>
+            <if test="creationDate != null">
+                #{creationDate,jdbcType = TIMESTAMP},
+            </if>
+            <if test="lastUpdatedBy != null">
+                #{lastUpdatedBy,jdbcType = VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null">
+                #{lastUpdateDate,jdbcType = TIMESTAMP},
+            </if>
+            <if test="lastUpdateIp != null">
+                #{lastUpdateIp,jdbcType = VARCHAR},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType = DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <!-- 批量新增对象 MEETING -->
+    <insert id="insertMeetingList" parameterType="java.util.List">
+        insert into MEETING(
+        ID ,
+        NAME ,
+        AUTHOR_ID ,
+        AUTHOR_CODE ,
+        AUTHOR_NAME ,
+        MEETING_ROOM_ID ,
+        MEETING_ROOM_NAME ,
+        PLACE_ID ,
+        PLACE_NAME ,
+        YN_APPROVE ,
+        APPROVAL_IDS ,
+        APPROVAL_CODES ,
+        APPROVAL_NAMES ,
+        APPROVAL_STATE ,
+        PRE_START_TIME ,
+        START_TIME ,
+        END_TIME ,
+        HOST_ID ,
+        HOST_CODE ,
+        HOST_NAME ,
+        ORG_DEPT_ID ,
+        ORG_DEPT_CODE ,
+        ORG_DEPT_NAME ,
+        YN_VALID ,
+        YN_PUBLIC ,
+        YN_NEW_PLACE ,
+        YN_SHOW_EVENT ,
+        PHONE_NUMBER ,
+        CONTENT ,
+        MEETING_TYPE_ID ,
+        MEETING_TYPE_CODE ,
+        MEETING_TYPE_NAME ,
+        ATTENDEE_IDS ,
+        ATTENDEE_CODES ,
+        ATTENDEE_NAMES ,
+        EVENT_TYPE ,
+        REMIND_TYPE ,
+        REMIND_DURATION ,
+        BG_COLOR ,
+        NOTE ,
+        ATTRIBUTE_01 ,
+        ATTRIBUTE_02 ,
+        ATTRIBUTE_03 ,
+        ATTRIBUTE_04 ,
+        ATTRIBUTE_05 ,
+        ATTRIBUTE_06 ,
+        ATTRIBUTE_07 ,
+        ATTRIBUTE_08 ,
+        ATTRIBUTE_09 ,
+        ATTRIBUTE_10 ,
+        SECRET_LEVEL ,
+        ORG_IDENTITY ,
+        CREATED_BY ,
+        CREATED_DEPT ,
+        CREATION_DATE ,
+        LAST_UPDATED_BY ,
+        LAST_UPDATE_DATE ,
+        LAST_UPDATE_IP ,
+        VERSION
+        )
+        <foreach collection="dtoList" item="item" index="index" separator="union all">
+            select
+            #{item.id,jdbcType = VARCHAR} ,
+            #{item.name,jdbcType = VARCHAR} ,
+            #{item.authorId,jdbcType = VARCHAR} ,
+            #{item.authorCode,jdbcType = VARCHAR} ,
+            #{item.authorName,jdbcType = VARCHAR} ,
+            #{item.meetingRoomId,jdbcType = VARCHAR} ,
+            #{item.meetingRoomName,jdbcType = VARCHAR} ,
+            #{item.placeId,jdbcType = VARCHAR} ,
+            #{item.placeName,jdbcType = VARCHAR} ,
+            #{item.ynApprove,jdbcType = VARCHAR} ,
+            #{item.approvalIds,jdbcType = VARCHAR} ,
+            #{item.approvalCodes,jdbcType = VARCHAR} ,
+            #{item.approvalNames,jdbcType = VARCHAR} ,
+            #{item.approvalState,jdbcType = VARCHAR} ,
+            #{item.preStartTime,jdbcType = TIMESTAMP} ,
+            #{item.startTime,jdbcType = TIMESTAMP} ,
+            #{item.endTime,jdbcType = TIMESTAMP} ,
+            #{item.hostId,jdbcType = VARCHAR} ,
+            #{item.hostCode,jdbcType = VARCHAR} ,
+            #{item.hostName,jdbcType = VARCHAR} ,
+            #{item.orgDeptId,jdbcType = VARCHAR} ,
+            #{item.orgDeptCode,jdbcType = VARCHAR} ,
+            #{item.orgDeptName,jdbcType = VARCHAR} ,
+            #{item.ynValid,jdbcType = VARCHAR} ,
+            #{item.ynPublic,jdbcType = VARCHAR} ,
+            #{item.ynNewPlace,jdbcType = VARCHAR} ,
+            #{item.ynShowEvent,jdbcType = VARCHAR} ,
+            #{item.phoneNumber,jdbcType = VARCHAR} ,
+            #{item.content,jdbcType = VARCHAR} ,
+            #{item.meetingTypeId,jdbcType = VARCHAR} ,
+            #{item.meetingTypeCode,jdbcType = VARCHAR} ,
+            #{item.meetingTypeName,jdbcType = VARCHAR} ,
+            #{item.attendeeIds,jdbcType = VARCHAR} ,
+            #{item.attendeeCodes,jdbcType = VARCHAR} ,
+            #{item.attendeeNames,jdbcType = VARCHAR} ,
+            #{item.eventType,jdbcType = VARCHAR} ,
+            #{item.remindType,jdbcType = VARCHAR} ,
+            #{item.remindDuration,jdbcType = DECIMAL} ,
+            #{item.bgColor,jdbcType = VARCHAR} ,
+            #{item.note,jdbcType = VARCHAR} ,
+            #{item.attribute01,jdbcType = VARCHAR} ,
+            #{item.attribute02,jdbcType = VARCHAR} ,
+            #{item.attribute03,jdbcType = VARCHAR} ,
+            #{item.attribute04,jdbcType = VARCHAR} ,
+            #{item.attribute05,jdbcType = VARCHAR} ,
+            #{item.attribute06,jdbcType = VARCHAR} ,
+            #{item.attribute07,jdbcType = VARCHAR} ,
+            #{item.attribute08,jdbcType = VARCHAR} ,
+            #{item.attribute09,jdbcType = TIMESTAMP} ,
+            #{item.attribute10,jdbcType = TIMESTAMP} ,
+            #{item.secretLevel,jdbcType = VARCHAR} ,
+            #{item.orgIdentity,jdbcType = VARCHAR} ,
+            #{item.createdBy,jdbcType = VARCHAR} ,
+            #{item.createdDept,jdbcType = VARCHAR} ,
+            #{item.creationDate,jdbcType = TIMESTAMP} ,
+            #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+            #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+            #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+            #{item.version,jdbcType = DECIMAL}
+            from dual
+        </foreach>
+    </insert>
+    <!-- 更新对象 MEETING -->
+    <update id="updateMeetingSensitive" parameterType="avicit.myportal.meeting.meeting.dto.MeetingDTO">
+        update MEETING
+        <set>
+            <if test="id != null">
+                ID = #{id,jdbcType = VARCHAR} ,
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType = VARCHAR} ,
+            </if>
+            <if test="authorId != null">
+                AUTHOR_ID = #{authorId,jdbcType = VARCHAR} ,
+            </if>
+            <if test="authorCode != null">
+                AUTHOR_CODE = #{authorCode,jdbcType = VARCHAR} ,
+            </if>
+            <if test="authorName != null">
+                AUTHOR_NAME = #{authorName,jdbcType = VARCHAR} ,
+            </if>
+            <if test="meetingRoomId != null">
+                MEETING_ROOM_ID = #{meetingRoomId,jdbcType = VARCHAR} ,
+            </if>
+            <if test="meetingRoomName != null">
+                MEETING_ROOM_NAME = #{meetingRoomName,jdbcType = VARCHAR} ,
+            </if>
+            <if test="placeId != null">
+                PLACE_ID = #{placeId,jdbcType = VARCHAR} ,
+            </if>
+            <if test="placeName != null">
+                PLACE_NAME = #{placeName,jdbcType = VARCHAR} ,
+            </if>
+            <if test="ynApprove != null">
+                YN_APPROVE = #{ynApprove,jdbcType = VARCHAR} ,
+            </if>
+            <if test="approvalIds != null">
+                APPROVAL_IDS = #{approvalIds,jdbcType = VARCHAR} ,
+            </if>
+            <if test="approvalCodes != null">
+                APPROVAL_CODES = #{approvalCodes,jdbcType = VARCHAR} ,
+            </if>
+            <if test="approvalNames != null">
+                APPROVAL_NAMES = #{approvalNames,jdbcType = VARCHAR} ,
+            </if>
+            <if test="approvalState != null">
+                APPROVAL_STATE = #{approvalState,jdbcType = VARCHAR} ,
+            </if>
+            <if test="preStartTime != null">
+                PRE_START_TIME = #{preStartTime,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="startTime != null">
+                START_TIME = #{startTime,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="endTime != null">
+                END_TIME = #{endTime,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="hostId != null">
+                HOST_ID = #{hostId,jdbcType = VARCHAR} ,
+            </if>
+            <if test="hostCode != null">
+                HOST_CODE = #{hostCode,jdbcType = VARCHAR} ,
+            </if>
+            <if test="hostName != null">
+                HOST_NAME = #{hostName,jdbcType = VARCHAR} ,
+            </if>
+            <if test="orgDeptId != null">
+                ORG_DEPT_ID = #{orgDeptId,jdbcType = VARCHAR} ,
+            </if>
+            <if test="orgDeptCode != null">
+                ORG_DEPT_CODE = #{orgDeptCode,jdbcType = VARCHAR} ,
+            </if>
+            <if test="orgDeptName != null">
+                ORG_DEPT_NAME = #{orgDeptName,jdbcType = VARCHAR} ,
+            </if>
+            <if test="ynValid != null">
+                YN_VALID = #{ynValid,jdbcType = VARCHAR} ,
+            </if>
+            <if test="ynPublic != null">
+                YN_PUBLIC = #{ynPublic,jdbcType = VARCHAR} ,
+            </if>
+            <if test="ynNewPlace != null">
+                YN_NEW_PLACE = #{ynNewPlace,jdbcType = VARCHAR} ,
+            </if>
+            <if test="ynShowEvent != null">
+                YN_SHOW_EVENT = #{ynShowEvent,jdbcType = VARCHAR} ,
+            </if>
+            <if test="phoneNumber != null">
+                PHONE_NUMBER = #{phoneNumber,jdbcType = VARCHAR} ,
+            </if>
+            <if test="content != null">
+                CONTENT = #{content,jdbcType = VARCHAR} ,
+            </if>
+            <if test="meetingTypeId != null">
+                MEETING_TYPE_ID = #{meetingTypeId,jdbcType = VARCHAR} ,
+            </if>
+            <if test="meetingTypeCode != null">
+                MEETING_TYPE_CODE = #{meetingTypeCode,jdbcType = VARCHAR} ,
+            </if>
+            <if test="meetingTypeName != null">
+                MEETING_TYPE_NAME = #{meetingTypeName,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attendeeIds != null">
+                ATTENDEE_IDS = #{attendeeIds,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attendeeCodes != null">
+                ATTENDEE_CODES = #{attendeeCodes,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attendeeNames != null">
+                ATTENDEE_NAMES = #{attendeeNames,jdbcType = VARCHAR} ,
+            </if>
+            <if test="eventType != null">
+                EVENT_TYPE = #{eventType,jdbcType = VARCHAR} ,
+            </if>
+            <if test="remindType != null">
+                REMIND_TYPE = #{remindType,jdbcType = VARCHAR} ,
+            </if>
+            <if test="remindDuration != null">
+                REMIND_DURATION = #{remindDuration,jdbcType = DECIMAL} ,
+            </if>
+            <if test="bgColor != null">
+                BG_COLOR = #{bgColor,jdbcType = VARCHAR} ,
+            </if>
+            <if test="note != null">
+                NOTE = #{note,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute01 != null">
+                ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute02 != null">
+                ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute03 != null">
+                ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute04 != null">
+                ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute05 != null">
+                ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute06 != null">
+                ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute07 != null">
+                ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute08 != null">
+                ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+            </if>
+            <if test="attribute09 != null">
+                ATTRIBUTE_09 = #{attribute09,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="attribute10 != null">
+                ATTRIBUTE_10 = #{attribute10,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="secretLevel != null">
+                SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+            </if>
+            <if test="orgIdentity != null">
+                ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+            </if>
+            <if test="createdDept != null">
+                CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+            </if>
+            <if test="creationDate != null">
+                CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="lastUpdatedBy != null">
+                LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+            </if>
+            <if test="lastUpdateDate != null">
+                LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="lastUpdateIp != null">
+                LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+            </if>
+            <if test="version != null">
+                VERSION = version+1
+            </if>
+        </set>
+        where id = #{id}
+        and version = #{version}
+    </update>
+    <!-- 更新对象 MEETING -->
+    <update id="updateMeetingAll" parameterType="avicit.myportal.meeting.meeting.dto.MeetingDTO">
+        update MEETING
+        <trim prefix="set" suffixOverrides=",">
+            ID = #{id,jdbcType = VARCHAR} ,
+            NAME = #{name,jdbcType = VARCHAR} ,
+            AUTHOR_ID = #{authorId,jdbcType = VARCHAR} ,
+            AUTHOR_CODE = #{authorCode,jdbcType = VARCHAR} ,
+            AUTHOR_NAME = #{authorName,jdbcType = VARCHAR} ,
+            MEETING_ROOM_ID = #{meetingRoomId,jdbcType = VARCHAR} ,
+            MEETING_ROOM_NAME = #{meetingRoomName,jdbcType = VARCHAR} ,
+            PLACE_ID = #{placeId,jdbcType = VARCHAR} ,
+            PLACE_NAME = #{placeName,jdbcType = VARCHAR} ,
+            YN_APPROVE = #{ynApprove,jdbcType = VARCHAR} ,
+            APPROVAL_IDS = #{approvalIds,jdbcType = VARCHAR} ,
+            APPROVAL_CODES = #{approvalCodes,jdbcType = VARCHAR} ,
+            APPROVAL_NAMES = #{approvalNames,jdbcType = VARCHAR} ,
+            APPROVAL_STATE = #{approvalState,jdbcType = VARCHAR} ,
+            PRE_START_TIME = #{preStartTime,jdbcType = TIMESTAMP} ,
+            START_TIME = #{startTime,jdbcType = TIMESTAMP} ,
+            END_TIME = #{endTime,jdbcType = TIMESTAMP} ,
+            HOST_ID = #{hostId,jdbcType = VARCHAR} ,
+            HOST_CODE = #{hostCode,jdbcType = VARCHAR} ,
+            HOST_NAME = #{hostName,jdbcType = VARCHAR} ,
+            ORG_DEPT_ID = #{orgDeptId,jdbcType = VARCHAR} ,
+            ORG_DEPT_CODE = #{orgDeptCode,jdbcType = VARCHAR} ,
+            ORG_DEPT_NAME = #{orgDeptName,jdbcType = VARCHAR} ,
+            YN_VALID = #{ynValid,jdbcType = VARCHAR} ,
+            YN_PUBLIC = #{ynPublic,jdbcType = VARCHAR} ,
+            YN_NEW_PLACE = #{ynNewPlace,jdbcType = VARCHAR} ,
+            YN_SHOW_EVENT = #{ynShowEvent,jdbcType = VARCHAR} ,
+            PHONE_NUMBER = #{phoneNumber,jdbcType = VARCHAR} ,
+            CONTENT = #{content,jdbcType = VARCHAR} ,
+            MEETING_TYPE_ID = #{meetingTypeId,jdbcType = VARCHAR} ,
+            MEETING_TYPE_CODE = #{meetingTypeCode,jdbcType = VARCHAR} ,
+            MEETING_TYPE_NAME = #{meetingTypeName,jdbcType = VARCHAR} ,
+            ATTENDEE_IDS = #{attendeeIds,jdbcType = VARCHAR} ,
+            ATTENDEE_CODES = #{attendeeCodes,jdbcType = VARCHAR} ,
+            ATTENDEE_NAMES = #{attendeeNames,jdbcType = VARCHAR} ,
+            EVENT_TYPE = #{eventType,jdbcType = VARCHAR} ,
+            REMIND_TYPE = #{remindType,jdbcType = VARCHAR} ,
+            REMIND_DURATION = #{remindDuration,jdbcType = DECIMAL} ,
+            BG_COLOR = #{bgColor,jdbcType = VARCHAR} ,
+            NOTE = #{note,jdbcType = VARCHAR} ,
+            ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+            ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+            ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+            ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+            ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+            ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+            ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+            ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+            ATTRIBUTE_09 = #{attribute09,jdbcType = TIMESTAMP} ,
+            ATTRIBUTE_10 = #{attribute10,jdbcType = TIMESTAMP} ,
+            SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+            LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+            LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+            LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+            VERSION = version+1
+        </trim>
+        where id = #{id}
+        and version = #{version}
+    </update>
+    <!-- 批量更新对象 MEETING -->
+    <update id="updateMeetingList" parameterType="java.util.List">
+        <if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
+        <foreach collection="dtoList" item="item" index="index" separator="" close="">
+            update MEETING
+            set
+            ID = #{item.id,jdbcType = VARCHAR} ,
+            NAME = #{item.name,jdbcType = VARCHAR} ,
+            AUTHOR_ID = #{item.authorId,jdbcType = VARCHAR} ,
+            AUTHOR_CODE = #{item.authorCode,jdbcType = VARCHAR} ,
+            AUTHOR_NAME = #{item.authorName,jdbcType = VARCHAR} ,
+            MEETING_ROOM_ID = #{item.meetingRoomId,jdbcType = VARCHAR} ,
+            MEETING_ROOM_NAME = #{item.meetingRoomName,jdbcType = VARCHAR} ,
+            PLACE_ID = #{item.placeId,jdbcType = VARCHAR} ,
+            PLACE_NAME = #{item.placeName,jdbcType = VARCHAR} ,
+            YN_APPROVE = #{item.ynApprove,jdbcType = VARCHAR} ,
+            APPROVAL_IDS = #{item.approvalIds,jdbcType = VARCHAR} ,
+            APPROVAL_CODES = #{item.approvalCodes,jdbcType = VARCHAR} ,
+            APPROVAL_NAMES = #{item.approvalNames,jdbcType = VARCHAR} ,
+            APPROVAL_STATE = #{item.approvalState,jdbcType = VARCHAR} ,
+            PRE_START_TIME = #{item.preStartTime,jdbcType = TIMESTAMP} ,
+            START_TIME = #{item.startTime,jdbcType = TIMESTAMP} ,
+            END_TIME = #{item.endTime,jdbcType = TIMESTAMP} ,
+            HOST_ID = #{item.hostId,jdbcType = VARCHAR} ,
+            HOST_CODE = #{item.hostCode,jdbcType = VARCHAR} ,
+            HOST_NAME = #{item.hostName,jdbcType = VARCHAR} ,
+            ORG_DEPT_ID = #{item.orgDeptId,jdbcType = VARCHAR} ,
+            ORG_DEPT_CODE = #{item.orgDeptCode,jdbcType = VARCHAR} ,
+            ORG_DEPT_NAME = #{item.orgDeptName,jdbcType = VARCHAR} ,
+            YN_VALID = #{item.ynValid,jdbcType = VARCHAR} ,
+            YN_PUBLIC = #{item.ynPublic,jdbcType = VARCHAR} ,
+            YN_NEW_PLACE = #{item.ynNewPlace,jdbcType = VARCHAR} ,
+            YN_SHOW_EVENT = #{item.ynShowEvent,jdbcType = VARCHAR} ,
+            PHONE_NUMBER = #{item.phoneNumber,jdbcType = VARCHAR} ,
+            CONTENT = #{item.content,jdbcType = VARCHAR} ,
+            MEETING_TYPE_ID = #{item.meetingTypeId,jdbcType = VARCHAR} ,
+            MEETING_TYPE_CODE = #{item.meetingTypeCode,jdbcType = VARCHAR} ,
+            MEETING_TYPE_NAME = #{item.meetingTypeName,jdbcType = VARCHAR} ,
+            ATTENDEE_IDS = #{item.attendeeIds,jdbcType = VARCHAR} ,
+            ATTENDEE_CODES = #{item.attendeeCodes,jdbcType = VARCHAR} ,
+            ATTENDEE_NAMES = #{item.attendeeNames,jdbcType = VARCHAR} ,
+            EVENT_TYPE = #{item.eventType,jdbcType = VARCHAR} ,
+            REMIND_TYPE = #{item.remindType,jdbcType = VARCHAR} ,
+            REMIND_DURATION = #{item.remindDuration,jdbcType = DECIMAL} ,
+            BG_COLOR = #{item.bgColor,jdbcType = VARCHAR} ,
+            NOTE = #{item.note,jdbcType = VARCHAR} ,
+            ATTRIBUTE_01 = #{item.attribute01,jdbcType = VARCHAR} ,
+            ATTRIBUTE_02 = #{item.attribute02,jdbcType = VARCHAR} ,
+            ATTRIBUTE_03 = #{item.attribute03,jdbcType = VARCHAR} ,
+            ATTRIBUTE_04 = #{item.attribute04,jdbcType = VARCHAR} ,
+            ATTRIBUTE_05 = #{item.attribute05,jdbcType = VARCHAR} ,
+            ATTRIBUTE_06 = #{item.attribute06,jdbcType = VARCHAR} ,
+            ATTRIBUTE_07 = #{item.attribute07,jdbcType = VARCHAR} ,
+            ATTRIBUTE_08 = #{item.attribute08,jdbcType = VARCHAR} ,
+            ATTRIBUTE_09 = #{item.attribute09,jdbcType = TIMESTAMP} ,
+            ATTRIBUTE_10 = #{item.attribute10,jdbcType = TIMESTAMP} ,
+            SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} ,
+            ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+            CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+            CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+            CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+            LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+            LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+            LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+            VERSION = version+1
+            where id = #{item.id}
+            and version = #{item.version};
+        </foreach>
+        <if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
+    </update>
+    <!-- 主键删除 MEETING -->
+    <delete id="deleteMeetingById" parameterType="java.lang.String">
+        delete
+        from MEETING
+        where id = #{id}
+    </delete>
 </mapper>

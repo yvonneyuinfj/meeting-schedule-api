@@ -204,6 +204,6 @@ import java.util.*;
 	public void exportData(@ApiParam(value = "查询条件", name = "queryReqBean") @RequestBody QueryReqBean<MeetingRoomDTO> queryReqBean, HttpServletResponse response) throws IOException {
         List<MeetingRoomDTO> list = meetingRoomService.searchMeetingRoomForExportExcel(queryReqBean);
 		// 输出
-		ExcelUtil.exportExcel(response, list, MeetingRoomDTO.class,"导出数据", "sheet1" );
+		ExcelUtil.exportExcel(response, list, MeetingRoomDTO.class,"会议室数据导出", "会议室信息" );
 	}
 }

@@ -356,18 +356,21 @@ public class MeetingRoomService {
 		Map<String, Set<String>> convertFormData = new HashMap<>();
 		for (MeetingRoomDTO meetingRoom : meetingRoomDTOList) {
 			BusinessUtil.createConvertSet(convertFormData, SystemConstant.USER, meetingRoom.getAdminId());
+			BusinessUtil.createConvertSet(convertFormData, SystemConstant.USER, meetingRoom.getCreatedBy());
 			BusinessUtil.createConvertSet(convertFormData, "PLATFORM_YES_NO_FLAG", meetingRoom.getYnPublic());
 			BusinessUtil.createConvertSet(convertFormData, SystemConstant.DEPT, meetingRoom.getOwnerDeptId());
 			BusinessUtil.createConvertSet(convertFormData, "PLATFORM_YES_NO_FLAG", meetingRoom.getYnApprove());
 			BusinessUtil.createConvertSet(convertFormData, SystemConstant.USER, meetingRoom.getApprovalIds());
 			BusinessUtil.createConvertSet(convertFormData, "PLATFORM_YES_NO_FLAG", meetingRoom.getYnValid());
 			BusinessUtil.createConvertSet(convertFormData, "PLATFORM_FILE_SECRET_LEVEL", meetingRoom.getSecretLevel());
+			BusinessUtil.createConvertSet(convertFormData, "MYPORTAL_MR_TYPE", meetingRoom.getType());
 		}
 		if (convertFormData.size() > 0) {
 			//获取请求结果
 			Map<String, Map<String, String>> convertResultData = convertColumnClient.replace(convertFormData);
 			//循环设置Alias或Name的值
 			for (MeetingRoomDTO meetingRoom : meetingRoomDTOList) {
+				meetingRoom.setCreatedByAlias(BusinessUtil.convertFormat(convertResultData, SystemConstant.USER, meetingRoom.getCreatedBy()));
 				meetingRoom.setAdminIdAlias(BusinessUtil.convertFormat(convertResultData, SystemConstant.USER, meetingRoom.getAdminId()));
 				meetingRoom.setYnPublicName(BusinessUtil.convertFormat(convertResultData, "PLATFORM_YES_NO_FLAG", meetingRoom.getYnPublic()));
 				meetingRoom.setOwnerDeptIdAlias(BusinessUtil.convertFormat(convertResultData, SystemConstant.DEPT, meetingRoom.getOwnerDeptId()));
@@ -375,6 +378,7 @@ public class MeetingRoomService {
 				meetingRoom.setApprovalIdsAlias(BusinessUtil.convertFormat(convertResultData, SystemConstant.USER, meetingRoom.getApprovalIds()));
 				meetingRoom.setYnValidName(BusinessUtil.convertFormat(convertResultData, "PLATFORM_YES_NO_FLAG", meetingRoom.getYnValid()));
 				meetingRoom.setSecretLevelName(BusinessUtil.convertFormat(convertResultData, "PLATFORM_FILE_SECRET_LEVEL", meetingRoom.getSecretLevel()));
+				meetingRoom.setTypeName(BusinessUtil.convertFormat(convertResultData, "MYPORTAL_MR_TYPE", meetingRoom.getType()));
 			}
 		}
 	}
@@ -395,6 +399,7 @@ public class MeetingRoomService {
             meetingRoom.setApprovalIds(BusinessUtil.convertFormat(convertResultData, SystemConstant.USER, meetingRoom.getApprovalIdsAlias()));
             meetingRoom.setYnValid(BusinessUtil.convertFormat(convertResultData, "PLATFORM_YES_NO_FLAG", meetingRoom.getYnValidName()));
             meetingRoom.setSecretLevel(BusinessUtil.convertFormat(convertResultData, "PLATFORM_FILE_SECRET_LEVEL", meetingRoom.getSecretLevelName()));
+            meetingRoom.setType(BusinessUtil.convertFormat(convertResultData, "MYPORTAL_MR_TYPE", meetingRoom.getTypeName()));
         }
     }
     /**
@@ -413,6 +418,7 @@ public class MeetingRoomService {
             BusinessUtil.createConvertSet(convertFormData, SystemConstant.USER, data.get("approvalIdsAlias"));
             BusinessUtil.createConvertSet(convertFormData, "PLATFORM_YES_NO_FLAG", data.get("ynValidName"));
             BusinessUtil.createConvertSet(convertFormData, "PLATFORM_FILE_SECRET_LEVEL", data.get("secretLevelName"));
+            BusinessUtil.createConvertSet(convertFormData, "MYPORTAL_MR_TYPE", data.get("typeName"));
         }
 		return  convertColumnClient.convertCodeToId(convertFormData);
     }

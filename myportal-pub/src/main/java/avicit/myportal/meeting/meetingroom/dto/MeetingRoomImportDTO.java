@@ -216,6 +216,13 @@ private static final long serialVersionUID = 1L;
     @Size(max = 4000, message = "会议室设备名称长度不能超过4000个字符")
     private String mtDeviceNames;
 
+    /**
+    * 会议室分类
+    */
+    @ExcelProperty("会议室分类")
+    private String typeName;
+
+
     @ColumnWidth(30)
     @ContentFontStyle(color=10)
     @ExcelProperty("错误信息")
